@@ -12,7 +12,11 @@ public:
     Complex operator-(const Complex &C2);
     Complex operator*(const Complex &C2);
     Complex operator/(const Complex &C2);
-    Complex operator>=(const Complex &C2);
+
+    bool operator >= (const Complex &C2);
+    bool operator <= (const Complex &C2);
+    bool operator == (const Complex &C2);
+
     void printme();
     ~Complex();
 };

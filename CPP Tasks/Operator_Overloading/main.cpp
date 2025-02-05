@@ -15,7 +15,34 @@ int main()
     C5.printme();
     Complex C6 = C1 / C2;
     C6.printme();
-    Complex C7 = C1 >= C2;
+
+    if(C1 >= C2)
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+    if(C2 <= C1)
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+    if(C1 == C2)
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
     cout << "Hello World!" << endl;
     return 0;
 }

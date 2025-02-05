@@ -51,10 +51,45 @@ Complex Complex::operator/(const Complex &C2)
     return result;
 }
 
-Complex Complex::operator>=(const Complex &C2)
+bool Complex::operator >= (const Complex &C2)
 {
-
+    std::cout<<">= Operator"<<std::endl;
+    if(this->m_real >= C2.m_real)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
+
+bool Complex::operator <=(const Complex &C2)
+{
+    std::cout<<"<= Operator"<<std::endl;
+    if(this->m_real >= C2.m_real)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool Complex::operator ==(const Complex &C2)
+{
+    std::cout<<"== Operator"<<std::endl;
+    if(this->m_real >= C2.m_real)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 void Complex::printme()
 {
@@ -66,9 +101,3 @@ Complex::~Complex()
 {
     std::cout<<"Destructor Called"<<std::endl;
 }
-
-
-
-
-
-
