@@ -14,7 +14,7 @@ int main()
     Accelerator A(&W);
     Break B(&W);
     Engine E;
-    cout << "WellCome to BMW" << endl;
+    cout << "WellCome to Car" << endl;
     C.carstart();
     A.AcceleratorPress();
     B.breakapplied();
