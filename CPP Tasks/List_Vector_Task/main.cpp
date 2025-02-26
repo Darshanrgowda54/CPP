@@ -3,6 +3,20 @@
 
 using namespace std;
 
+enum
+{
+    AddStudent =1,
+    Deletestudent,
+    Updatestudent,
+    Displaystudent,
+    Addstaff,
+    Deletestaff,
+    Updatestaff,
+    Displaystaff,
+    Exit
+};
+
+
 int main()
 {
     College college;
@@ -24,10 +38,15 @@ int main()
         cout<<"Enter your Choice: ";
         cin>>choice;
 
-        switch (choice) {
+        switch (choice)
+        {
         case 1:
-            cout <<"Enter RollNumber , Name , Age: ";
-            cin >>rollnumber>>name>>age;
+            cout<<"Enter the RollNumber: ";
+            cin>>rollnumber;
+            cout<<"Enter the Name: ";
+            cin>>name;
+            cout<<"Enter the Age: ";
+            cin>>age;
             college.addStudent(rollnumber,name,age);
             break;
         case 2:
@@ -37,7 +56,11 @@ int main()
             break;
         case 3:
             cout<<"Enter Student RollNumber to Update: ";
-            cin>>rollnumber>>name>>age;
+            cin>>rollnumber;
+            cout<<"Enter the Name: ";
+            cin>>name;
+            cout<<"Enter the age: ";
+            cin>>age;
             college.updateStudent(rollnumber,name,age);
             break;
         case 4:
@@ -45,8 +68,12 @@ int main()
             college.displayStudent();
             break;
         case 5:
-            cout <<"Enter StaffID , StaffName , StaffNumber: ";
-            cin >>staffID>>staffname>>staffnumber;
+            cout<<"Enter the StaffID: ";
+            cin>>staffID;
+            cout<<"Enter the StaffName: ";
+            cin>>staffname;
+            cout<<"Enter the StaffNumber: ";
+            cin>>staffnumber;
             college.addStaff(staffID,staffname,staffnumber);
             break;
         case 6:
@@ -57,6 +84,10 @@ int main()
         case 7:
             cout<<"Enter StaffID to Update: ";
             cin>>staffID;
+            cout<<"Enter the StaffName: ";
+            cin>>staffname;
+            cout<<"Enter the StaffNumber: ";
+            cin>>staffnumber;
             college.updateStaff(staffID,staffname,staffnumber);
             break;
         case 8:
@@ -66,7 +97,7 @@ int main()
         case 9:
             exit(0);
         default:
-            cout<<"Enter the Valid Choice";
+            cout<<"Enter the Valid Choice"<<endl;
             break;
         }
     }

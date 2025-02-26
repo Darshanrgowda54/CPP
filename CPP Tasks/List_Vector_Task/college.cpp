@@ -45,9 +45,11 @@ void College::displayStudent()
 {
     for(auto i = student.begin();i != student.end();i++)
     {
+        std::cout<<"____________________________________"<<std::endl;
         std::cout<<"Student RollNumber: "<<i->getrollnumber()<<std::endl;
         std::cout<<"Student Name: "<<i->getname()<<std::endl;
         std::cout<<"Student Age: "<<i->getage()<<std::endl;
+        std::cout<<"____________________________________"<<std::endl;
     }
 }
 
