@@ -2,39 +2,34 @@
 #include <iostream>
 
 
-// Student::Student()
-// {
-//     std::cout<<"Student Constructor Called"<<std::endl;
-// }
-
-Student::Student(int rollnumber, std::string name, int age)
+Student::Student(std::string studentID, std::string studentname, int studentNumber)
 {
     std::cout<<"Parameter Student Constructor Called"<<std::endl;
-    this->m_rollNumber = rollnumber;
-    this->m_name = name;
-    this->m_age = age;
+    this->m_ID = studentID;
+    this->m_name = studentname;
+    this->m_mobileNumber = studentNumber;
 }
 
-int Student::getrollnumber()
+std::string Student::getstudentID()
 {
-    return m_rollNumber;
+    return m_ID;
 }
 
-std::string Student::getname()
+std::string Student::getstudentname()
 {
     return m_name;
 }
 
-int Student::getage()
+int Student::getstudentNumber()
 {
-    return m_age;
+    return m_mobileNumber;
 }
 
 
-void Student::set(std::string name, int age)
+void Student::set(std::string studentname, int studentNumber)
 {
-    m_name = name;
-    m_age = age;
+    m_name = studentname;
+    m_mobileNumber = studentNumber;
 }
 
 
@@ -42,4 +37,3 @@ Student::~Student()
 {
     std::cout<<"Student Destructor Called"<<std::endl;
 }
-

@@ -20,8 +20,8 @@ enum
 int main()
 {
     College college;
-    int choice,rollnumber,age,staffID,staffnumber;
-    string name,staffname;
+    int choice,studentNumber,staffNumber;
+    string studentname,staffname,studentID,staffID;
 
     while(true)
     {
@@ -40,61 +40,61 @@ int main()
 
         switch (choice)
         {
-        case 1:
-            cout<<"Enter the RollNumber: ";
-            cin>>rollnumber;
+        case AddStudent:
+            cout<<"Enter the ID: ";
+            cin>>studentID;
             cout<<"Enter the Name: ";
-            cin>>name;
-            cout<<"Enter the Age: ";
-            cin>>age;
-            college.addStudent(rollnumber,name,age);
+            cin>>studentname;
+            cout<<"Enter the MobileNumber: ";
+            cin>>studentNumber;
+            college.addStudent(studentID,studentname,studentNumber);
             break;
-        case 2:
-            cout<<"Enter Student RollNumber to Delete: ";
-            cin>>rollnumber;
-            college.deleteStudent(rollnumber);
+        case Deletestudent:
+            cout<<"Enter Student ID to Delete: ";
+            cin>>studentID;
+            college.deleteStudent(studentID);
             break;
-        case 3:
-            cout<<"Enter Student RollNumber to Update: ";
-            cin>>rollnumber;
+        case Updatestudent:
+            cout<<"Enter Student ID to Update: ";
+            cin>>studentID;
             cout<<"Enter the Name: ";
-            cin>>name;
-            cout<<"Enter the age: ";
-            cin>>age;
-            college.updateStudent(rollnumber,name,age);
+            cin>>studentname;
+            cout<<"Enter the MobileNumber: ";
+            cin>>studentNumber;
+            college.updateStudent(studentID,studentname,studentNumber);
             break;
-        case 4:
+        case Displaystudent:
             cout<<"Display Students"<<endl;
             college.displayStudent();
             break;
-        case 5:
+        case Addstaff:
             cout<<"Enter the StaffID: ";
             cin>>staffID;
             cout<<"Enter the StaffName: ";
             cin>>staffname;
             cout<<"Enter the StaffNumber: ";
-            cin>>staffnumber;
-            college.addStaff(staffID,staffname,staffnumber);
+            cin>>staffNumber;
+            college.addStaff(staffID,staffname,staffNumber);
             break;
-        case 6:
+        case Deletestaff:
             cout<<"Enter StaffID to Delete: ";
             cin>>staffID;
             college.deleteStaff(staffID);
             break;
-        case 7:
+        case Updatestaff:
             cout<<"Enter StaffID to Update: ";
             cin>>staffID;
             cout<<"Enter the StaffName: ";
             cin>>staffname;
             cout<<"Enter the StaffNumber: ";
-            cin>>staffnumber;
-            college.updateStaff(staffID,staffname,staffnumber);
+            cin>>staffNumber;
+            college.updateStaff(staffID,staffname,staffNumber);
             break;
-        case 8:
+        case Displaystaff:
             cout<<"Display Staffs"<<endl;
             college.displayStaff();
             break;
-        case 9:
+        case Exit:
             exit(0);
         default:
             cout<<"Enter the Valid Choice"<<endl;

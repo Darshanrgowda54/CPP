@@ -13,14 +13,14 @@ private:
 public:
     College();
     ~College();
-    void addStudent(int rollnumber,std::string name,int age);
-    void deleteStudent(int rollnumber);
-    void updateStudent(int rollnumber,std::string name,int age);
+    void addStudent(std::string studentID,std::string studentname,int studentNumber);
+    void deleteStudent(std::string studentID);
+    void updateStudent(std::string studentID,std::string studentname,int studentNumber);
     void displayStudent();
 
-    void addStaff(int staffID,std::string staffname,int staffnumber);
-    void deleteStaff(int staffID);
-    void updateStaff(int staffID,std::string staffname,int staffnumber);
+    void addStaff(std::string staffID,std::string staffname,int staffnumber);
+    void deleteStaff(std::string staffID);
+    void updateStaff(std::string staffID,std::string staffname,int staffnumber);
     void displayStaff();
 };
 

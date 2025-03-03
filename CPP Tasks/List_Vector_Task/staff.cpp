@@ -1,38 +1,33 @@
 #include "staff.h"
 #include <iostream>
 
-// Staff::Staff()
-// {
-//     std::cout<<"Staff Constructor Called"<<std::endl;
-// }
-
-Staff::Staff(int staffID,std::string staffname,int staffnumber)
+Staff::Staff(std::string staffID,std::string staffname,int staffnumber)
 {
     std::cout<<"Staff Parameter Constructor Called"<<std::endl;
-    this->m_staffID = staffID;
-    this->m_staffname = staffname;
-    this->m_staffNumber = staffnumber;
+    this->m_ID = staffID;
+    this->m_name = staffname;
+    this->m_mobileNumber = staffnumber;
 }
 
-int Staff::getID()
+std::string Staff::getstaffID()
 {
-    return m_staffID;
+    return m_ID;
 }
 
-std::string Staff::getname()
+std::string Staff::getstaffname()
 {
-    return m_staffname;
+    return m_name;
 }
 
 int Staff::getstaffnumber()
 {
-    return m_staffNumber;
+    return m_mobileNumber;
 }
 
 void Staff::set(std::string staffname, int staffnumber)
 {
-    m_staffname = staffname;
-    m_staffNumber = staffnumber;
+    m_name = staffname;
+    m_mobileNumber = staffnumber;
 }
 
 Staff::~Staff()
