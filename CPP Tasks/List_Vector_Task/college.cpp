@@ -11,34 +11,36 @@ College::~College()
     std::cout<<"College Destructor Called"<<std::endl;
 }
 
-void College::addStudent(int rollnumber, std::string name, int age)
+void College::addStudent(std::string studentID, std::string studentname, int studentNumber)
 {
-    student.push_back(Student(rollnumber,name,age));
+    student.push_back(Student(studentID,studentname,studentNumber));
 }
 
-void College::deleteStudent(int rollnumber)
+void College::deleteStudent(std::string studentID)
 {
     for(auto i = student.begin();i != student.end();i++)
     {
-        if(i->getrollnumber() == rollnumber)
+        if(i->getstudentID() == studentID)
         {
             student.erase(i);
-            std::cout<<"Student Deleted From College :"<<rollnumber<<std::endl;
-            return;
+            std::cout<<"Student Deleted From College :"<<studentID<<std::endl;
+            break;
         }
     }
+    std::cout<<"Entered StudentID Not Found"<<std::endl;
 }
 
-void College::updateStudent(int rollnumber, std::string name, int age)
+void College::updateStudent(std::string studentID, std::string studentname, int studentNumber)
 {
     for(auto i = student.begin();i != student.end();i++)
     {
-        if(i->getrollnumber() == rollnumber)
+        if(i->getstudentID() == studentID)
         {
-            i->set(name,age);
-            return;
+            i->set(studentname,studentNumber);
+            break;
         }
     }
+    std::cout<<"Entered StudentID Not Found"<<std::endl;
 }
 
 void College::displayStudent()
@@ -46,49 +48,53 @@ void College::displayStudent()
     for(auto i = student.begin();i != student.end();i++)
     {
         std::cout<<"____________________________________"<<std::endl;
-        std::cout<<"Student RollNumber: "<<i->getrollnumber()<<std::endl;
-        std::cout<<"Student Name: "<<i->getname()<<std::endl;
-        std::cout<<"Student Age: "<<i->getage()<<std::endl;
+        std::cout<<"Student ID: "<<i->getstudentID()<<std::endl;
+        std::cout<<"Student Name: "<<i->getstudentname()<<std::endl;
+        std::cout<<"Student MobileNumber: "<<i->getstudentNumber()<<std::endl;
         std::cout<<"____________________________________"<<std::endl;
     }
 }
 
-void College::addStaff(int staffID, std::string staffname, int staffnumber)
+void College::addStaff(std::string staffID, std::string staffname, int staffnumber)
 {
     staff.push_back(Staff(staffID,staffname,staffnumber));
 }
 
-void College::deleteStaff(int staffID)
+void College::deleteStaff(std::string staffID)
 {
     for(auto i = staff.begin();i != staff.end();i++)
     {
-        if(i->getID() == staffID)
+        if(i->getstaffID() == staffID)
         {
             staff.erase(i);
             std::cout<<"Staff Deleted From College :"<<staffID<<std::endl;
             return;
         }
     }
+    std::cout<<"Entered StaffID Not Found"<<std::endl;
 }
 
-void College::updateStaff(int staffID, std::string staffname, int staffnumber)
+void College::updateStaff(std::string staffID, std::string staffname, int staffnumber)
 {
     for(auto i = staff.begin();i != staff.end();i++)
     {
-        if(i->getID() == staffID)
+        if(i->getstaffID() == staffID)
         {
             i->set(staffname,staffnumber);
             return;
         }
     }
+    std::cout<<"Entered StaffID Not Found"<<std::endl;
 }
 
 void College::displayStaff()
 {
     for(auto i = staff.begin();i != staff.end();i++)
     {
-        std::cout<<"Staff RollNumber: "<<i->getID()<<std::endl;
-        std::cout<<"Staff Name: "<<i->getname()<<std::endl;
-        std::cout<<"Staff Age: "<<i->getstaffnumber()<<std::endl;
+        std::cout<<"____________________________________"<<std::endl;
+        std::cout<<"Staff ID: "<<i->getstaffID()<<std::endl;
+        std::cout<<"Staff Name: "<<i->getstaffname()<<std::endl;
+        std::cout<<"Staff MobileNumber: "<<i->getstaffnumber()<<std::endl;
+        std::cout<<"____________________________________"<<std::endl;
     }
 }

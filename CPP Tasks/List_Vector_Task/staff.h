@@ -1,18 +1,14 @@
 #ifndef STAFF_H
 #define STAFF_H
+#include "personaldetails.h"
 #include <string>
 
-class Staff
+class Staff:public PersonalDetails
 {
-private:
-    int m_staffID;
-    std::string m_staffname;
-    int m_staffNumber;
 public:
-    //Staff();
-    Staff(int staffID,std::string staffname,int staffnumber);
-    int getID();
-    std::string getname();
+    Staff(std::string staffID,std::string staffname,int staffnumber);
+    std::string getstaffID();
+    std::string getstaffname();
     int getstaffnumber();
     void set(std::string staffname,int staffnumber);
     ~Staff();
