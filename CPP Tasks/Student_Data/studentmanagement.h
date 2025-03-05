@@ -5,8 +5,6 @@
 
 class StudentManagement
 {
-private:
-    std::list<Student>m_list;
 public:
     StudentManagement();
     ~StudentManagement();
@@ -14,6 +12,8 @@ public:
 
     void displaystudent();
     void filechoice();
+private:
+    std::list<Student>m_list;
 };
 
 #endif // STUDENTMANAGEMENT_H

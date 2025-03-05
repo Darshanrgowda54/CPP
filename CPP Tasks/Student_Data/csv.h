@@ -5,14 +5,14 @@
 
 class CSV:public Fileoperation
 {
-private:
-    std::list<Student>m_studentlist;
-    std::list<Student>student;
 public:
     CSV();
     ~CSV();
     std::list<Student> readData();
     //std::list<Student> addData(std::string name,int age,std::string usn,std::string mobilenumber);
+// private:
+//     std::list<Student>m_studentlist;
+//     std::list<Student>m_student;
 };
 
 #endif // CSV_H

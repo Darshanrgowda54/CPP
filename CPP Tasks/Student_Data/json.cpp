@@ -12,7 +12,6 @@ JSON::~JSON()
     std::cout<<"JSON Destructor Called"<<std::endl;
 }
 
-
 std::list<Student> JSON::readData()
 {
     std::cout<<"JSON readdata Function Called"<<std::endl;
