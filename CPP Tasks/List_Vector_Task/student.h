@@ -6,12 +6,12 @@
 class Student:public PersonalDetails
 {
 public:
-    //Student();
-    Student(std::string studentID, std::string studentname, int studentNumber);
+    Student ();
+    Student(std::string studentID, std::string studentname, std::string studentNumber);
     std::string getstudentID();
     std::string getstudentname();
-    int getstudentNumber();
-    void set(std::string name, int mobileNumber);
+    std::string getstudentNumber();
+    void set(std::string name, std::string mobileNumber);
     ~Student();
 };
 

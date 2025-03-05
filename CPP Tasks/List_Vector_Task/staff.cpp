@@ -1,7 +1,13 @@
 #include "staff.h"
 #include <iostream>
 
-Staff::Staff(std::string staffID,std::string staffname,int staffnumber)
+
+Staff::Staff()
+{
+    std::cout<<"Staff Constructor Called"<<std::endl;
+}
+
+Staff::Staff(std::string staffID, std::string staffname, std::string staffnumber)
 {
     std::cout<<"Staff Parameter Constructor Called"<<std::endl;
     this->m_ID = staffID;
@@ -19,12 +25,12 @@ std::string Staff::getstaffname()
     return m_name;
 }
 
-int Staff::getstaffnumber()
+std::string Staff::getstaffnumber()
 {
     return m_mobileNumber;
 }
 
-void Staff::set(std::string staffname, int staffnumber)
+void Staff::set(std::string staffname, std::string staffnumber)
 {
     m_name = staffname;
     m_mobileNumber = staffnumber;

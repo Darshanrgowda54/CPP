@@ -4,13 +4,13 @@
 
 class PersonalDetails
 {
-protected:
-    std::string m_name;
-    std::string m_ID;
-    int m_mobileNumber;
 public:
     PersonalDetails();
     ~PersonalDetails();
+protected:
+    std::string m_name;
+    std::string m_ID;
+    std::string m_mobileNumber;
 };
 
 #endif // PERSONALDETAILS_H
