@@ -4,11 +4,6 @@
 
 class Student
 {
-private:
-    std::string m_name;
-    int m_age;
-    std::string m_USN;
-    std::string m_mobileNumber;
 public:
     Student();
     ~Student();
@@ -18,6 +13,11 @@ public:
     int getAge();
     std::string getUSN();
     std::string getMobileNumber();
+private:
+    std::string m_name;
+    int m_age;
+    std::string m_USN;
+    std::string m_mobileNumber;
 };
 
 #endif // STUDENT_H

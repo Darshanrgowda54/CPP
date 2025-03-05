@@ -5,6 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         college.cpp \
+        collegemanagement.cpp \
         main.cpp \
         personaldetails.cpp \
         staff.cpp \
@@ -12,6 +13,7 @@ SOURCES += \
 
 HEADERS += \
     college.h \
+    collegemanagement.h \
     personaldetails.h \
     staff.h \
     student.h
