@@ -8,6 +8,7 @@ TextFile::TextFile()
     std::cout<<"TextFile Constructor Called"<<std::endl;
 }
 
+
 TextFile::~TextFile()
 {
     std::cout<<"TextFile Constructor Called"<<std::endl;
@@ -16,32 +17,55 @@ TextFile::~TextFile()
 
 void TextFile::writeData()
 {
-    std::string name,mobilenumber;
+    std::cout<<"TextFile Write Function Called"<<std::endl;
+    std::string name,mobilenumber,id,address;
 
     std::cout << "Enter Name: ";
     std::cin >> name;
     std::cout << "Enter Mobile Number: ";
     std::cin >> mobilenumber;
+    std::cout<< "Enter ID: ";
+    std::cin>> id;
+    std::cout<< "Enter Address: ";
+    std::cin>> address;
 
-    Student newStudent(name, mobilenumber);
     std::list<Student> studentList;
-    studentList.push_back(newStudent);
+    Student Studenttext(name, mobilenumber,id,address);
+    studentList.push_back(Studenttext);
 
-
-    std::cout<<"TextFile Write Function Called"<<std::endl;
-    std::ofstream file("students.txt",std::ios::app);
+    std::ofstream textfile("students.txt",std::ios::app);
 
     auto& student = studentList;
     for (auto i = student.begin();i != student.end();i++)
     {
-        file <<i->getName() << "," << i->getMobileNumber() <<std::endl;
+        textfile <<i->getName() << " "
+                 << i->getMobileNumber() << " "
+                 << i->getId() << " "
+                 << i->getAddress() << " "
+                 <<std::endl;
     }
-    file.close();
+    textfile.close();
 }
+
 
 std::list<Student> TextFile::readData()
 {
     std::cout << "TextFile Read Function Called" << std::endl;
+
+    std::ifstream textfile("students.txt");
+    std::string name,mobilenumber,id,address;
+
+    std::list<Student>studentlist;
+
+    while (getline(textfile, name, ' ') && getline(textfile, mobilenumber,' ')
+           && std::getline(textfile,id,' ') && std::getline(textfile,address))
+    {
+        studentlist.push_back(Student(name,mobilenumber,id,address));
+        // std::cout << "\nStudent Name: " << name << std::endl;
+        // std::cout << "Student Number: " << mobilenumber << std::endl;
+    }
+    textfile.close();
+    return studentlist;
 }
 
 

@@ -1,29 +1,41 @@
 #include "StudentManagement.h"
 #include <iostream>
-// #include <fstream>
-// #include <string>
-
 using namespace std;
 
 
 int main()
 {
     StudentManagement studentmanagement;
-    studentmanagement.filechoice();
+
+    int choice;
+
+    while(true)
+    {
+        std::cout<<"\nFile Choice"<<std::endl;
+        std::cout<<"1. TEXT FILE"<<std::endl;
+        std::cout<<"2. CSV FILE"<<std::endl;
+        std::cout<<"3. EXIT"<<std::endl;
+        std::cout<<"Enter your Choice: ";
+        std::cin>>choice;
+
+        switch (choice)
+        {
+        case 1:
+            studentmanagement.txtFileOperation();
+            break;
+        case 2:
+            studentmanagement.csvFileOperation();
+            break;
+        case 3:
+            return 0;
+        default:
+            std::cout<<"Invalid"<<std::endl;
+            break;
+        }
+    }
     cout<<"Hello World!"<<endl;
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
