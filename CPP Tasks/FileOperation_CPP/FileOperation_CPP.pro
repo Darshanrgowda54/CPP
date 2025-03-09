@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        CsvFile.cpp \
         FileOperation.cpp \
         Student.cpp \
         StudentManagement.cpp \
@@ -11,6 +12,7 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
+    CsvFile.h \
     FileOperation.h \
     Student.h \
     StudentManagement.h \
