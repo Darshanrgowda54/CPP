@@ -13,6 +13,7 @@ CsvFile::~CsvFile()
     std::cout<<"CSV File Destructor Called"<<std::endl;
 }
 
+
 void CsvFile::writeWifiData()
 {
     std::cout<<"CSV Write Data Function Called"<<std::endl;
@@ -47,6 +48,7 @@ void CsvFile::writeWifiData()
     }
     csvfile.close();
 }
+
 
 std::list<Wifi> CsvFile::readWifiData()
 {

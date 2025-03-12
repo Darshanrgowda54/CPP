@@ -6,8 +6,10 @@ CONFIG -= qt
 SOURCES += \
         CsvFile.cpp \
         Wifi.cpp \
+        WifiManager.cpp \
         main.cpp
 
 HEADERS += \
     CsvFile.h \
-    Wifi.h
+    Wifi.h \
+    WifiManager.h
