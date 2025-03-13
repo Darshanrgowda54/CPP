@@ -14,31 +14,11 @@ CsvFile::~CsvFile()
 }
 
 
-void CsvFile::writeWifiData()
+void CsvFile::writeWifiData(std::list<Wifi> wifidata)
 {
-    std::cout<<"CSV Write Data Function Called"<<std::endl;
-
-    float signalStrength;
-    std::string name,status,password;
-
-    std::cout<<"Enter Wifi Name: ";
-    std::cin>>name;
-    std::cout<<"Enter Wifi SignalStrength: ";
-    std::cin>>signalStrength;
-    std::cout<<"Enter Wifi Status: ";
-    std::cin>>status;
-    std::cout<<"Enter wifi Password: ";
-    std::cin>>password;
-
-    std::list<Wifi>wifilist;
-    Wifi wificsv(name,signalStrength,status,password);
-    wifilist.push_back(wificsv);
-
-
-    auto& wifi = wifilist;
-    std::ofstream csvfile("WifiList.csv",std::ios::app);
+    std::ofstream csvfile("WifiList.csv");
     {
-        for(auto i = wifi.begin();i != wifi.end();i++)
+        for(auto i = wifidata.begin();i != wifidata.end();i++)
         {
             csvfile <<i->getName()<<","
                     <<i->getSignalStrength()<<","
@@ -58,13 +38,48 @@ std::list<Wifi> CsvFile::readWifiData()
     float signalStrength;
     std::string name,status,password;
 
-    std::list<Wifi>wifilist;
-
     while (std::getline(csvfile,name,',') && csvfile>>signalStrength && csvfile.ignore()
            && std::getline(csvfile,status,',') && std::getline(csvfile,password))
     {
-        wifilist.push_back(Wifi(name,signalStrength,status,password));
+        m_wifilist.push_back(Wifi(name,signalStrength,status,password));
     }
     csvfile.close();
-    return wifilist;
+    return m_wifilist;
 }
+
+
+
+// void CsvFile::writeWifiData()
+// {
+//     std::cout<<"CSV Write Data Function Called"<<std::endl;
+
+//     float signalStrength;
+//     std::string name,status,password;
+
+//     std::cout<<"Enter Wifi Name: ";
+//     std::cin>>name;
+//     std::cout<<"Enter Wifi SignalStrength: ";
+//     std::cin>>signalStrength;
+//     std::cout<<"Enter Wifi Status: ";
+//     std::cin>>status;
+//     std::cout<<"Enter wifi Password: ";
+//     std::cin>>password;
+
+//     std::list<Wifi>wifilist;
+//     Wifi wificsv(name,signalStrength,status,password);
+//     wifilist.push_back(wificsv);
+
+
+//     auto& wifi = wifilist;
+//     std::ofstream csvfile("WifiList.csv",std::ios::app);
+//     {
+//         for(auto i = wifi.begin();i != wifi.end();i++)
+//         {
+//             csvfile <<i->getName()<<","
+//                     <<i->getSignalStrength()<<","
+//                     <<i->getStatus()<<","
+//                     <<i->getPassword()<<std::endl;
+//         }
+//     }
+//     csvfile.close();
+// }

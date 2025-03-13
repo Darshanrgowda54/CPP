@@ -40,4 +40,9 @@ std::string Wifi::getPassword()
     return m_wifiPassword;
 }
 
+void Wifi::setStatus(std::string status)
+{
+    this->m_wifiStatus = status;
+}
+
 
