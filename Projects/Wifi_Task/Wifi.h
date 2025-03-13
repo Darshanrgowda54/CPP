@@ -14,6 +14,8 @@ public:
     float getSignalStrength();
     std::string getStatus();
     std::string getPassword();
+
+    void setStatus(std::string status);
 private:
     std::string m_wifiName;
     std::string m_wifiStatus;

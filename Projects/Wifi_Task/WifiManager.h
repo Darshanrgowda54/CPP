@@ -3,18 +3,20 @@
 
 #include "Wifi.h"
 #include <list>
+#include "CsvFile.h"
 class WifiManager
 {
 public:
     WifiManager();
     ~WifiManager();
 
-    void displayWifiDetails();
     void wifimanager();
-    void sortWifilist(std::list<Wifi>& wifiList);
+    void displayWifiDetails();
+    void sortWifilist();
     void connectWifi();
 private:
-    std::list<Wifi>m_list;
+    std::list<Wifi> m_wifiList;
+    CsvFile* m_csvfile;
 };
 
 #endif // WIFIMANAGER_H
