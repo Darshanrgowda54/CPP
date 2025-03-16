@@ -7,6 +7,6 @@ class Car:public Vehicle
 public:
     Car();
     ~Car();
-    Car(std::string brand, std::string model, std::string vehicleNumber, float rentPrice);
+    Car(std::string brand, std::string model, std::string vehicleNumber, float rentPrice, std::string status);
 };
 #endif // CAR_H

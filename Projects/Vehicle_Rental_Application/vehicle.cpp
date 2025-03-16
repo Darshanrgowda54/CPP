@@ -3,18 +3,22 @@
 
 Vehicle::Vehicle()
 {
-    std::cout<<"Vehical Constructor Called"<<std::endl;
+    std::cout<<"Vehicle Constructor Called"<<std::endl;
 }
 
 Vehicle::~Vehicle()
 {
-    std::cout<<"Vehical Destructor Called"<<std::endl;
+    std::cout<<"Vehicle Destructor Called"<<std::endl;
 }
 
-Vehicle::Vehicle(std::string brand, std::string model, std::string vehicleNumber, float rentPrice):m_brand(std::move(brand)),
-    m_model(std::move(model)), m_vehicleNumber(std::move(vehicleNumber)), m_rentPrice(rentPrice)
+Vehicle::Vehicle(std::string brand, std::string model, std::string vehicleNumber, float rentPrice,std::string status)
 {
-
+    std::cout<<"Vehicle Parameter Constructor Called"<<std::endl;
+    this->m_rentPrice = rentPrice;
+    this->m_brand = brand;
+    this->m_model = model;
+    this->m_vehicleNumber = vehicleNumber;
+    this->m_status = status;
 }
 
 std::string Vehicle::getBrand()
@@ -37,9 +41,19 @@ float Vehicle::getRentPrice()
     return m_rentPrice;
 }
 
+std::string Vehicle::getStatus()
+{
+    return m_status;
+}
+
 void Vehicle::setRentPrice(float rentPrice)
 {
     this->m_rentPrice = rentPrice;
+}
+
+void Vehicle::setStatus(std::string status)
+{
+    this->m_status = status;
 }
 
 void Vehicle::setBrand(std::string brand)
