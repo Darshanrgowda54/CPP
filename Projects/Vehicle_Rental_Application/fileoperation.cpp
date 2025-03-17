@@ -1,5 +1,4 @@
 #include "fileoperation.h"
-#include "rentaldetails.h"
 #include <iostream>
 #include <fstream>
 
@@ -83,27 +82,28 @@ std::list<Bike> FileOperation::readBikeData()
 
 void FileOperation::writeRentalHistory(std::list<RentalDetails> rentalHistory)
 {
-    std::cout << "CSV RentalHistory WriteData Function Called" << std::endl;
+    std::cout<<"CSV Write Rental History Function Called"<<std::endl;
+
     std::ofstream csvRentalFile("RentalHistory.csv");
 
-    for (auto& record : rentalHistory)
+    for(auto i = rentalHistory.begin();i != rentalHistory.end();i++)
     {
-        csvRentalFile << record.getCustomerName() << ","
-                      << record.getContactNumber() << ","
-                      << record.getVehicleNumber() << ","
-                      << record.getStatus() << ","
-                      << record.getRentDuration() << std::endl;
+        csvRentalFile<< i->getCustomerName()<<","
+                   <<i->getContactNumber()<<","
+                   <<i->getVehicleNumber()<<","
+                   <<i->getStatus()<<","
+                   <<i->getRentDuration()<<std::endl;
     }
     csvRentalFile.close();
 }
 
+
 std::list<RentalDetails> FileOperation::readRentalHistory()
 {
-    std::cout << "CSV RentalHistory ReadData Function Called" << std::endl;
+    std::cout<<"CSV Read Rental History Function Called"<<std::endl;
 
     std::list<RentalDetails> rentalHistory;
     std::ifstream csvRentalFile("RentalHistory.csv");
-
     std::string customerName, contactNumber, vehicleNumber, status;
     int rentDuration;
 
@@ -116,5 +116,4 @@ std::list<RentalDetails> FileOperation::readRentalHistory()
     csvRentalFile.close();
     return rentalHistory;
 }
-
 

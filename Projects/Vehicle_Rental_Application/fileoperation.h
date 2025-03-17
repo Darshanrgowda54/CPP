@@ -12,11 +12,13 @@ public:
     ~FileOperation();
 
     void writeCarData(std::list<Car>carList);
-    void writeBikeData(std::list<Bike>bikeList);
     std::list<Car> readCarData();
+
+    void writeBikeData(std::list<Bike>bikeList);
     std::list<Bike> readBikeData();
+
+    void writeRentalHistory(std::list<RentalDetails>rentalHistory);
     std::list<RentalDetails> readRentalHistory();
-    void writeRentalHistory(std::list<RentalDetails> rentalHistory);
 };
 
 #endif // FILEOPERATION_H
