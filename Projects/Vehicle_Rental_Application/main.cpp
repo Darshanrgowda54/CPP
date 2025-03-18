@@ -8,3 +8,4 @@ int main()
     manager.applicationManager();
     return 0;
 }
+
