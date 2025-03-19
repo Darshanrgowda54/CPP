@@ -12,108 +12,141 @@ FileOperation::~FileOperation()
     std::cout<<"FileOperation Destructor Called"<<std::endl;
 }
 
-void FileOperation::writeCarData(std::list<Car> carList)
+void FileOperation::writeCarData(std::list<Car*> carList)
 {
     std::cout<<"CSV Car WriteData Function Called"<<std::endl;
     std::ofstream csvCarFile("CarListData.csv");
-    for(auto i = carList.begin();i != carList.end();i++)
+
+    for(auto& car : carList)
     {
-        csvCarFile<< i->getBrand()<< ","
-                   <<i->getModel()<< ","
-                   <<i->getVehicleNumber()<< ","
-                   <<i->getRentPrice()<< ","
-                   <<i->getStatus()<<std::endl;
+        csvCarFile<<car->getBrand()<< ","
+                   <<car->getModel()<< ","
+                   <<car->getVehicleNumber()<< ","
+                   <<car->getStatus()<< ","
+                   <<car->getRentPrice()<<std::endl;
     }
     csvCarFile.close();
 }
 
-void FileOperation::writeBikeData(std::list<Bike>bikeList)
+void FileOperation::writeBikeData(std::list<Bike*> bikeList)
 {
     std::cout<<"CSV Bike WriteData Function Called"<<std::endl;
     std::ofstream csvBikeFile("BikeListData.csv");
-    for(auto Bike = bikeList.begin();Bike != bikeList.end();Bike++)
+
+    for(auto& Bike : bikeList)
     {
         csvBikeFile<< Bike->getBrand()<< ","
                     <<Bike->getModel()<< ","
                     <<Bike->getVehicleNumber()<< ","
-                    <<Bike->getRentPrice()<< ","
-                    <<Bike->getStatus()<<std::endl;
+                    <<Bike->getStatus()<< ","
+                    <<Bike->getRentPrice()<<std::endl;
     }
     csvBikeFile.close();
 }
 
-std::list<Car> FileOperation::readCarData()
+std::list<Car*> FileOperation::readCarData()
 {
     std::cout<<"CSV Car ReadData Function Called"<<std::endl;
 
-    std::list<Car> carlist;
+    std::list<Car*> carlist;
     std::ifstream csvCarFile("CarListData.csv");
-    float rentPrice;
+
+    if (!csvCarFile.is_open())
+    {
+        std::cerr << "Error: Could not open CarListData.csv" << std::endl;
+        return carlist;
+    }
+
     std::string brand, model, vehicleNumber,status;
+    float rentPrice;
 
     while(std::getline(csvCarFile,brand,',') && std::getline(csvCarFile,model,',')&& std::getline(csvCarFile,vehicleNumber,',')
-           && csvCarFile>>rentPrice && csvCarFile.ignore() && std::getline(csvCarFile,status))
+        && std::getline(csvCarFile,status,',') && csvCarFile>>rentPrice)
     {
-        carlist.push_back(Car(brand, model, vehicleNumber, rentPrice,status));
+        carlist.push_back(new Car(brand, model, vehicleNumber,status, rentPrice));
     }
     csvCarFile.close();
     return carlist;
 }
 
 
-std::list<Bike> FileOperation::readBikeData()
+std::list<Bike*> FileOperation::readBikeData()
 {
     std::cout<<"CSV Bike ReadData Function Called"<<std::endl;
 
-    std::list<Bike> bikeList;
+    std::list<Bike*> bikeList;
     std::ifstream csvBikeFile("BikeListData.csv");
-    float rentPrice;
-    std::string brand, model, vehicleNumber,status;
 
-    while(std::getline(csvBikeFile,brand,',') && std::getline(csvBikeFile,model,',')&& std::getline(csvBikeFile,vehicleNumber,',')
-           && csvBikeFile>>rentPrice && csvBikeFile.ignore() && std::getline(csvBikeFile,status))
+    if (!csvBikeFile.is_open())
     {
-        bikeList.push_back(Bike(brand, model, vehicleNumber, rentPrice,status));
+        std::cerr << "Error: Could not open CarListData.csv" << std::endl;
+        return bikeList;
+    }
+
+    std::string brand, model, vehicleNumber,status;
+    float rentPrice;
+
+    while(std::getline(csvBikeFile,brand,',') &&
+           std::getline(csvBikeFile,model,',') &&
+           std::getline(csvBikeFile,vehicleNumber,',') &&
+           std::getline(csvBikeFile,status,',') &&
+           csvBikeFile>>rentPrice)
+    {
+        bikeList.push_back(new Bike(brand, model, vehicleNumber, status, rentPrice));
+        csvBikeFile.ignore();
     }
     csvBikeFile.close();
     return bikeList;
 }
 
 
-void FileOperation::writeRentalHistory(std::list<RentalDetails> rentalHistory)
+void FileOperation::writeRentalHistory(std::list<RentalDetails*> rentalHistory)
 {
     std::cout<<"CSV Write Rental History Function Called"<<std::endl;
 
     std::ofstream csvRentalFile("RentalHistory.csv");
 
-    for(auto i = rentalHistory.begin();i != rentalHistory.end();i++)
+    for(auto& rent : rentalHistory)
     {
-        csvRentalFile<< i->getCustomerName()<<","
-                   <<i->getContactNumber()<<","
-                   <<i->getVehicleNumber()<<","
-                   <<i->getStatus()<<","
-                   <<i->getRentDuration()<<std::endl;
+        csvRentalFile << rent->getCustomerName() << ","
+                      << rent->getContactNumber() << ","
+                      << rent->getVehicleType() << ","
+                      << rent->getRentDuration() << ","
+                      << rent->getVehicleDetails()->getBrand() << ","
+                      << rent->getVehicleDetails()->getModel() << ","
+                      << rent->getVehicleDetails()->getVehicleNumber() << ","
+                      << rent->getVehicleDetails()->getStatus() << ","
+                      << rent->getVehicleDetails()->getRentPrice() << std::endl;
     }
     csvRentalFile.close();
 }
 
 
-std::list<RentalDetails> FileOperation::readRentalHistory()
+std::list<RentalDetails*> FileOperation::readRentalHistory()
 {
     std::cout<<"CSV Read Rental History Function Called"<<std::endl;
 
-    std::list<RentalDetails> rentalHistory;
+    std::list<RentalDetails*> rentalHistory;
     std::ifstream csvRentalFile("RentalHistory.csv");
-    std::string customerName, contactNumber, vehicleNumber, status;
+    std::string customerName, contactNumber, vehicleType, brand, model, vehicleNumber,status;
     int rentDuration;
+    float rentPrice;
 
-    while (std::getline(csvRentalFile, customerName, ',') &&std::getline(csvRentalFile, contactNumber, ',') &&
-           std::getline(csvRentalFile, vehicleNumber, ',') &&std::getline(csvRentalFile, status, ',') &&
-           csvRentalFile >> rentDuration && csvRentalFile.ignore())
+    while (std::getline(csvRentalFile, customerName, ',') &&
+           std::getline(csvRentalFile, contactNumber, ',') &&
+           std::getline(csvRentalFile, vehicleType, ',') &&
+           (csvRentalFile >> rentDuration) && csvRentalFile.ignore() &&
+           std::getline(csvRentalFile, brand, ',') &&
+           std::getline(csvRentalFile, model, ',') &&
+           std::getline(csvRentalFile, vehicleNumber, ',') &&
+           std::getline(csvRentalFile,status,',') &&
+           (csvRentalFile >> rentPrice))
     {
-        rentalHistory.push_back(RentalDetails(customerName, contactNumber, vehicleNumber, status, rentDuration));
+        Vehicle* vehicle = new Vehicle(brand, model, vehicleNumber,status,rentPrice);
+        rentalHistory.push_back(new RentalDetails(customerName, contactNumber, vehicleType, rentDuration, vehicle));
     }
     csvRentalFile.close();
     return rentalHistory;
 }
+
 

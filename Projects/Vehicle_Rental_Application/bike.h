@@ -7,7 +7,7 @@ class Bike:public Vehicle
 public:
     Bike();
     ~Bike();
-    Bike(std::string brand,std::string model,std::string vehicleNumber,float rentPrice,std::string status);
+    Bike(std::string brand,std::string model,std::string vehicleNumber,std::string status,float rentPrice);
 };
 
 #endif // BIKE_H
