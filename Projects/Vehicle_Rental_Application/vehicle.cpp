@@ -11,14 +11,14 @@ Vehicle::~Vehicle()
     std::cout<<"Vehicle Destructor Called"<<std::endl;
 }
 
-Vehicle::Vehicle(std::string brand, std::string model, std::string vehicleNumber, float rentPrice,std::string status)
+Vehicle::Vehicle(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice)
 {
     std::cout<<"Vehicle Parameter Constructor Called"<<std::endl;
-    this->m_rentPrice = rentPrice;
     this->m_brand = brand;
     this->m_model = model;
     this->m_vehicleNumber = vehicleNumber;
     this->m_status = status;
+    this->m_rentPrice = rentPrice;
 }
 
 std::string Vehicle::getBrand()
