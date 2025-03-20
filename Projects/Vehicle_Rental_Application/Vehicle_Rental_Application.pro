@@ -6,16 +6,18 @@ CONFIG -= qt
 SOURCES += \
         bike.cpp \
         car.cpp \
-        customer.cpp \
         fileoperation.cpp \
         main.cpp \
+        paymentmethod.cpp \
+        rentaldetails.cpp \
         vehicle.cpp \
         vehiclemanager.cpp
 
 HEADERS += \
     bike.h \
     car.h \
-    customer.h \
     fileoperation.h \
+    paymentmethod.h \
+    rentaldetails.h \
     vehicle.h \
     vehiclemanager.h

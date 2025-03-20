@@ -19,6 +19,7 @@ public:
 
     void writeRentalHistory(std::list<RentalDetails*> rentalHistory);
     std::list<RentalDetails*> readRentalHistory();
+
 };
 
 #endif // FILEOPERATION_H

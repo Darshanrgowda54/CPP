@@ -64,6 +64,7 @@ std::list<Car*> FileOperation::readCarData()
         && std::getline(csvCarFile,status,',') && csvCarFile>>rentPrice)
     {
         carlist.push_back(new Car(brand, model, vehicleNumber,status, rentPrice));
+        csvCarFile.ignore();
     }
     csvCarFile.close();
     return carlist;
@@ -79,7 +80,7 @@ std::list<Bike*> FileOperation::readBikeData()
 
     if (!csvBikeFile.is_open())
     {
-        std::cerr << "Error: Could not open CarListData.csv" << std::endl;
+        std::cerr << "Error: Could not open BikeListData.csv" << std::endl;
         return bikeList;
     }
 
@@ -116,7 +117,10 @@ void FileOperation::writeRentalHistory(std::list<RentalDetails*> rentalHistory)
                       << rent->getVehicleDetails()->getModel() << ","
                       << rent->getVehicleDetails()->getVehicleNumber() << ","
                       << rent->getVehicleDetails()->getStatus() << ","
-                      << rent->getVehicleDetails()->getRentPrice() << std::endl;
+                      << rent->getVehicleDetails()->getRentPrice() << ","
+                      <<rent->getPaymentMethod()->getAmount() << ","
+                      <<rent->getPaymentMethod()->getPaymentType() << ","
+                      <<rent->getPaymentMethod()->getPaymentStatus() <<std::endl;
     }
     csvRentalFile.close();
 }
@@ -128,9 +132,9 @@ std::list<RentalDetails*> FileOperation::readRentalHistory()
 
     std::list<RentalDetails*> rentalHistory;
     std::ifstream csvRentalFile("RentalHistory.csv");
-    std::string customerName, contactNumber, vehicleType, brand, model, vehicleNumber,status;
+    std::string customerName, contactNumber, vehicleType, brand, model, vehicleNumber,status, paymentType, paymentStatus;
     int rentDuration;
-    float rentPrice;
+    float rentPrice, amount = 0.0;
 
     while (std::getline(csvRentalFile, customerName, ',') &&
            std::getline(csvRentalFile, contactNumber, ',') &&
@@ -140,10 +144,14 @@ std::list<RentalDetails*> FileOperation::readRentalHistory()
            std::getline(csvRentalFile, model, ',') &&
            std::getline(csvRentalFile, vehicleNumber, ',') &&
            std::getline(csvRentalFile,status,',') &&
-           (csvRentalFile >> rentPrice))
+           (csvRentalFile >> rentPrice) && csvRentalFile.ignore() &&
+           (csvRentalFile >> amount) && csvRentalFile.ignore() &&
+           std::getline(csvRentalFile,paymentType,',') &&
+           std::getline(csvRentalFile,paymentStatus))
     {
         Vehicle* vehicle = new Vehicle(brand, model, vehicleNumber,status,rentPrice);
-        rentalHistory.push_back(new RentalDetails(customerName, contactNumber, vehicleType, rentDuration, vehicle));
+        PaymentMethod* payment = new PaymentMethod(amount, paymentType, paymentStatus);
+        rentalHistory.push_back(new RentalDetails(customerName, contactNumber, vehicleType, rentDuration, vehicle,payment));
     }
     csvRentalFile.close();
     return rentalHistory;
