@@ -11,7 +11,7 @@ RentalDetails::~RentalDetails()
     std::cout<<"Rental Destructor Called"<<std::endl;
 }
 
-RentalDetails::RentalDetails(std::string customerName, std::string contactNumber, std::string vehicleType, int rentDuration, Vehicle* vehicle)
+RentalDetails::RentalDetails(std::string customerName, std::string contactNumber, std::string vehicleType, int rentDuration, RentalVehicles* vehicle, PaymentMode *payment)
 {
     std::cout<<"Rental Parameter Constructor Called"<<std::endl;
     this->m_customerName = customerName;
@@ -19,6 +19,7 @@ RentalDetails::RentalDetails(std::string customerName, std::string contactNumber
     this->m_vehicleType = vehicleType;
     this->m_rentDuration = rentDuration;
     this->m_vehicle = vehicle;
+    this->m_payment = payment;
 }
 
 std::string RentalDetails::getCustomerName()
@@ -46,7 +47,12 @@ void RentalDetails::setVehicleType(std::string type)
     this->m_vehicleType = type;
 }
 
-Vehicle* RentalDetails::getVehicleDetails()
+RentalVehicles* RentalDetails::getRentalVehicleDetails()
 {
     return m_vehicle;
+}
+
+PaymentMode *RentalDetails::getPaymentMode()
+{
+    return m_payment;
 }

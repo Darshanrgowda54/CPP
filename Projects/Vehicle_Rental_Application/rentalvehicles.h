@@ -1,14 +1,14 @@
-#ifndef VEHICLE_H
-#define VEHICLE_H
+#ifndef RENTALVEHICLES_H
+#define RENTALVEHICLES_H
 
 #include <string>
 
-class Vehicle
+class RentalVehicles
 {
 public:
-    Vehicle();
-    ~Vehicle();
-    Vehicle(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice);
+    RentalVehicles();
+    ~RentalVehicles();
+    RentalVehicles(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice);
 
     std::string getBrand();
     std::string getModel();
@@ -30,4 +30,4 @@ protected:
     float m_rentPrice;
 };
 
-#endif // VEHICLE_H
+#endif // RENTALVEHICLES_H

@@ -4,20 +4,30 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        bike.cpp \
-        car.cpp \
+        admins.cpp \
+        cash.cpp \
         fileoperation.cpp \
+        loginmanagementsystem.cpp \
         main.cpp \
-        paymentmethod.cpp \
+        paymentmode.cpp \
+        rentalbikes.cpp \
+        rentalcars.cpp \
         rentaldetails.cpp \
-        vehicle.cpp \
+        rentalvehicles.cpp \
+        upi.cpp \
+        users.cpp \
         vehiclemanager.cpp
 
 HEADERS += \
-    bike.h \
-    car.h \
+    admins.h \
+    cash.h \
     fileoperation.h \
-    paymentmethod.h \
+    loginmanagementsystem.h \
+    paymentmode.h \
+    rentalbikes.h \
+    rentalcars.h \
     rentaldetails.h \
-    vehicle.h \
+    rentalvehicles.h \
+    upi.h \
+    users.h \
     vehiclemanager.h

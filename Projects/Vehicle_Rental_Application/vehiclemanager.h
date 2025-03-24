@@ -1,10 +1,9 @@
 #ifndef VEHICLEMANAGER_H
 #define VEHICLEMANAGER_H
 
-#include "bike.h"
-#include "car.h"
+#include "rentalbikes.h"
+#include "rentalcars.h"
 #include "fileoperation.h"
-#include "paymentmethod.h"
 #include "rentaldetails.h"
 #include <list>
 class VehicleManager
@@ -22,19 +21,24 @@ public:
     void updateBikePrice();
     void updateCarPrice();
 
-    void searchCar();
     void searchBike();
+    void searchCar();
+
+    void rentBike();
+    void rentCar();
 
     void addVehicles();
     void displayVehicles();
     void updateVehiclesPrice();
     void deleteVehicle();
     void searchVehicles();
-    void rentVehicle();
+    void rentVehicles();
     void returnVehicle();
     void displayRentalHistory();
 
-    void sortVehicles();
+    void sortBike();
+    void sortCar();
+
     void sortByName();
     void sortByPrice();
     void sortBookedVehicle();
@@ -43,11 +47,11 @@ public:
     void applicationManager();
 
 private:
-    std::list<Bike*> m_bikeList;
-    std::list<Car*> m_carList;
+    std::list<RentalBikes*> m_bikeList;
+    std::list<RentalCars*> m_carList;
     std::list<RentalDetails*> m_rentalHistory;
-    FileOperation* fileoperation;
-    PaymentMethod* payment;
+
+    FileOperation* m_fileoperation;
 };
 
 #endif // VEHICLEMANAGER_H
