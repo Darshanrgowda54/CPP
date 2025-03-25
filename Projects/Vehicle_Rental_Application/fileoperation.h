@@ -1,11 +1,11 @@
 #ifndef FILEOPERATION_H
 #define FILEOPERATION_H
 
-#include "admins.h"
+#include "admin.h"
 #include "rentalbikes.h"
 #include "rentalcars.h"
 #include "rentaldetails.h"
-#include "users.h"
+#include "user.h"
 #include <list>
 class FileOperation
 {
@@ -22,11 +22,11 @@ public:
     void writeRentalHistory(std::list<RentalDetails*> rentalHistory);
     std::list<RentalDetails*> readRentalHistory();
 
-    void writeAdminData(std::list<Admins*> adminList);
-    std::list<Admins*> readAdminData();
+    void writeAdminData(std::list<Admin*> adminList);
+    std::list<Admin*> readAdminData();
 
-    void writeUserData(std::list<Users*> userList);
-    std::list<Users*> readUserData();
+    void writeUserData(std::list<User*> userList);
+    std::list<User*> readUserData();
 
 };
 

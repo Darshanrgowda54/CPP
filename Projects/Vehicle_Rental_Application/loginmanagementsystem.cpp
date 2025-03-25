@@ -9,10 +9,10 @@ LoginManagementSystem::LoginManagementSystem()
 
     m_adminList = m_fileoperation->readAdminData();
     m_userList = m_fileoperation->readUserData();
-    for(auto& i : m_userList)
-    {
-        std::cout<<i->getEmailId()<<" "<<i->getPassword()<<std::endl;;
-    }
+    // for(auto& i : m_userList)
+    // {
+    //     std::cout<<i->getEmailId()<<" "<<i->getPassword()<<std::endl;;
+    // }
 }
 
 LoginManagementSystem::~LoginManagementSystem()
@@ -43,7 +43,7 @@ void LoginManagementSystem::adminMenu()
     int choice;
     while(true)
     {
-        std::cout<<"\nAdmin Menu"<<std::endl;
+        std::cout<<"\n Admin Menu"<<std::endl;
         std::cout<<" 1.Add Vehicles"<<std::endl;
         std::cout<<" 2.Delete Vehicles"<<std::endl;
         std::cout<<" 3.Update Vehicles Rent Price"<<std::endl;
@@ -79,7 +79,7 @@ void LoginManagementSystem::adminMenu()
             vehicle->displayRentalHistory();
             break;
         case 8:
-            std::cout<<"Logout From Admin"<<std::endl;
+            std::cout<<"Admin Logout Successfully"<<std::endl;
             return;
         default:
             std::cout<<"Invalid Choice"<<std::endl;
@@ -95,12 +95,11 @@ void LoginManagementSystem::userMenu()
     int choice;
     while(true)
     {
-        std::cout<<"\nUser Menu"<<std::endl;
+        std::cout<<"\n User Menu"<<std::endl;
         std::cout<<" 1.Display Vehicles"<<std::endl;
         std::cout<<" 2.Rent Vehicle"<<std::endl;
         std::cout<<" 3.Search Vehicle"<<std::endl;
-        std::cout<<" 4.Sort Vehicles"<<std::endl;
-        std::cout<<" 5.Logout User Menu"<<std::endl;
+        std::cout<<" 4.Logout User Menu"<<std::endl;
         std::cout<<" Enter Your Choice:";
         std::cin>>choice;
 
@@ -116,9 +115,6 @@ void LoginManagementSystem::userMenu()
             vehicle->searchVehicles();
             break;
         case 4:
-
-            break;
-        case 5:
             std::cout<<"Logout From User"<<std::endl;
             return;
         default:
@@ -136,7 +132,7 @@ void LoginManagementSystem::userLoginMenu()
     int choice;
     while(true)
     {
-        std::cout<<"\nLogin Menu"<<std::endl;
+        std::cout<<"\n Login Menu"<<std::endl;
         std::cout<<" 1.User SignIn"<<std::endl;
         std::cout<<" 2.User SignUp"<<std::endl;
         std::cout<<" 3.Exit Login Menu"<<std::endl;
@@ -146,10 +142,10 @@ void LoginManagementSystem::userLoginMenu()
         switch (choice)
         {
         case 1:
-            addUsers();
+            userLogin();
             break;
         case 2:
-            userLogin();
+            registerUser();
             break;
         case 3:
             std::cout<<"Exit From User Login Menu"<<std::endl;
@@ -164,34 +160,26 @@ void LoginManagementSystem::userLoginMenu()
 
 void LoginManagementSystem::userLogin()
 {
-    std::cout<<"User Login Function Called"<<std::endl;
+    std::string Id, password;
+    std::cout << "Enter Email ID: ";
+    std::cin >> Id;
+    std::cout << "Enter Password: ";
+    std::cin >> password;
 
-    std::string Id,password;
-
-    std::cout<<"Enter Email ID: ";
-    std::cin>>Id;
-    std::cout<<"Enter Password: ";
-    std::cin>>password;
-    for(auto& user : m_userList)
+    for (auto& user : m_userList)
     {
-        //std::cout<<user->getEmailId()<<" "<<user->g\etPassword()<<std::endl;
-        // Id = user->getEmailId();
-        // password = user->getPassword();
-        if(user->getEmailId() == Id && user->getPassword() == password)
+        if (user->getEmailId() == Id && user->getPassword() == password)
         {
-            std::cout<<"User Login SuccessFull"<<std::endl;
+            std::cout << "User Login Successful" << std::endl;
             userMenu();
-        }
-        else
-        {
-            std::cout<<"Invalid ID or Password"<<std::endl;
             return;
         }
     }
+    std::cout << "Invalid ID or Password" << std::endl;
 }
 
 
-void LoginManagementSystem::addUsers()
+void LoginManagementSystem::registerUser()
 {
     std::cout<<"Add User Function Called"<<std::endl;
 
@@ -206,11 +194,11 @@ void LoginManagementSystem::addUsers()
     std::cout<<"Enter Password: ";
     std::cin>>password;
 
-    m_userList.push_back(new Users(name,password,contactNumber,emailId));
+    m_userList.push_back(new User(name,password,contactNumber,emailId));
 }
 
 
-void LoginManagementSystem::addAdmins()
+void LoginManagementSystem::registerAdmin()
 {
     std::cout<<"Add Admin Function Called"<<std::endl;
 
@@ -223,7 +211,7 @@ void LoginManagementSystem::addAdmins()
     std::cout<<"Enter Password: ";
     std::cin>>password;
 
-    m_adminList.push_back(new Admins(Id, password, adminName));
+    m_adminList.push_back(new Admin(Id, password, adminName));
 }
 
 
@@ -237,19 +225,17 @@ void LoginManagementSystem::adminLogin()
     std::cin>>Id;
     std::cout<<"Enter Admin Password: ";
     std::cin>>password;
-    for(auto& admin : m_adminList)
+
+    for (auto& admin : m_adminList)
     {
-        if(admin->getId() == Id && admin->getPassword() == password)
+        if (admin->getId() == Id && admin->getPassword() == password)
         {
+            std::cout << "Admin Login Successful" << std::endl;
             adminMenu();
-            std::cout<<"Admin Login SuccessFull"<<std::endl;
-        }
-        else
-        {
-            std::cout<<"Invalid ID or Password"<<std::endl;
             return;
         }
     }
+    std::cout << "Invalid ID or Password" << std::endl;
 }
 
 
@@ -260,7 +246,7 @@ void LoginManagementSystem::adminLoginMenu()
     int choice;
     while(true)
     {
-        std::cout<<"\nLogin Menu"<<std::endl;
+        std::cout<<"\n Login Menu"<<std::endl;
         std::cout<<" 1.Admin SignIn"<<std::endl;
         std::cout<<" 2.Admin SignUp"<<std::endl;
         std::cout<<" 3.Exit Login Menu"<<std::endl;
@@ -270,10 +256,10 @@ void LoginManagementSystem::adminLoginMenu()
         switch (choice)
         {
         case 1:
-            addAdmins();
+            adminLogin();
             break;
         case 2:
-            adminLogin();
+            registerAdmin();
             break;
         case 3:
             std::cout<<"Exit From Admin Login Menu"<<std::endl;
@@ -293,7 +279,7 @@ void LoginManagementSystem::applicationManager()
     int choice;
     while (true)
     {
-        std::cout<<"\nWellcome to Rental Application"<<std::endl;
+        std::cout<<"\n Wellcome to Rental Application"<<std::endl;
         std::cout<<" 1.Admin"<<std::endl;
         std::cout<<" 2.User"<<std::endl;
         std::cout<<" 3.Exit Application"<<std::endl;

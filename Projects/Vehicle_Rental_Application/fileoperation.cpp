@@ -1,4 +1,6 @@
 #include "fileoperation.h"
+#include "admin.h"
+#include "user.h"
 #include <iostream>
 #include <fstream>
 
@@ -158,7 +160,7 @@ std::list<RentalDetails*> FileOperation::readRentalHistory()
     return rentalHistory;
 }
 
-void FileOperation::writeAdminData(std::list<Admins*> adminList)
+void FileOperation::writeAdminData(std::list<Admin*> adminList)
 {
     std::cout<<"CSV Admin WriteData Function Called"<<std::endl;
 
@@ -175,11 +177,11 @@ void FileOperation::writeAdminData(std::list<Admins*> adminList)
     csvAdminFile.close();
 }
 
-std::list<Admins*> FileOperation::readAdminData()
+std::list<Admin*> FileOperation::readAdminData()
 {
     std::cout<<"CSV Admin ReadData Function Called"<<std::endl;
 
-    std::list<Admins*> adminlist;
+    std::list<Admin*> adminlist;
     std::ifstream csvAdminFile("AdminDataList.csv");
     std::string Id,password,name;
 
@@ -191,13 +193,13 @@ std::list<Admins*> FileOperation::readAdminData()
         // {
         //     std::cout<<admin->getName();
         // }
-        adminlist.push_back(new Admins(Id,password,name));
+        adminlist.push_back(new Admin(Id,password,name));
     }
     csvAdminFile.close();
     return adminlist;
 }
 
-void FileOperation::writeUserData(std::list<Users*> userList)
+void FileOperation::writeUserData(std::list<User*> userList)
 {
     std::cout<<"CSV User WriteData Function Called"<<std::endl;
 
@@ -215,11 +217,11 @@ void FileOperation::writeUserData(std::list<Users*> userList)
     csvUserFile.close();
 }
 
-std::list<Users*> FileOperation::readUserData()
+std::list<User*> FileOperation::readUserData()
 {
     std::cout<<"CSV User ReadData Function Called"<<std::endl;
 
-    std::list<Users*> userList;
+    std::list<User*> userList;
     std::ifstream csvUserFile("UserDataList.csv");
     std::string name,password,contactNumber,emailId;
 
@@ -228,7 +230,7 @@ std::list<Users*> FileOperation::readUserData()
            std::getline(csvUserFile,contactNumber,',') &&
            std::getline(csvUserFile,emailId))
     {
-        userList.push_back(new Users(name,password,contactNumber,emailId));
+        userList.push_back(new User(name,password,contactNumber,emailId));
     }
     csvUserFile.close();
     return userList;

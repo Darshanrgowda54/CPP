@@ -1,17 +1,17 @@
-#include "admins.h"
+#include "admin.h"
 #include <iostream>
 
-Admins::Admins()
+Admin::Admin()
 {
     std::cout<<"Admin Constructor Called"<<std::endl;
 }
 
-Admins::~Admins()
+Admin::~Admin()
 {
     std::cout<<"Admin Destructor Called"<<std::endl;
 }
 
-Admins::Admins(std::string Id, std::string password, std::string name)
+Admin::Admin(std::string Id, std::string password, std::string name)
 {
     std::cout<<"Admin Parameter Constructor Called"<<std::endl;
     this->m_Id = Id;
@@ -19,32 +19,32 @@ Admins::Admins(std::string Id, std::string password, std::string name)
     this->m_adminName = name;
 }
 
-std::string Admins::getId()
+std::string Admin::getId()
 {
     return m_Id;
 }
 
-std::string Admins::getPassword()
+std::string Admin::getPassword()
 {
     return m_Password;
 }
 
-std::string Admins::getName()
+std::string Admin::getName()
 {
     return m_adminName;
 }
 
-void Admins::setId(std::string Id)
+void Admin::setId(std::string Id)
 {
     this->m_Id = Id;
 }
 
-void Admins::setPassword(std::string password)
+void Admin::setPassword(std::string password)
 {
     this->m_Password = password;
 }
 
-void Admins::setName(std::string name)
+void Admin::setName(std::string name)
 {
     this->m_adminName = name;
 }

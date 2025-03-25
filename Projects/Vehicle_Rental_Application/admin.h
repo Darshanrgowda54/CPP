@@ -1,13 +1,13 @@
-#ifndef ADMINS_H
-#define ADMINS_H
+#ifndef ADMIN_H
+#define ADMIN_H
 
 #include <string>
-class Admins
+class Admin
 {
 public:
-    Admins();
-    ~Admins();
-    Admins(std::string Id, std::string password, std::string name);
+    Admin();
+    ~Admin();
+    Admin(std::string Id, std::string password, std::string name);
 
     std::string getId();
     std::string getPassword();
@@ -23,4 +23,4 @@ private:
     std::string m_adminName;
 };
 
-#endif // ADMINS_H
+#endif // ADMIN_H

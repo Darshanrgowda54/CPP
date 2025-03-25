@@ -1,13 +1,13 @@
-#ifndef USERS_H
-#define USERS_H
+#ifndef USER_H
+#define USER_H
 
 #include <string>
-class Users
+class User
 {
 public:
-    Users();
-    ~Users();
-    Users(std::string name, std::string password, std::string contactNumber, std::string email);
+    User();
+    ~User();
+    User(std::string name, std::string password, std::string contactNumber, std::string email);
 
     std::string getName();
     std::string getPassword();
@@ -26,4 +26,4 @@ private:
     std::string m_userEmail;
 };
 
-#endif // USERS_H
+#endif // USER_H
