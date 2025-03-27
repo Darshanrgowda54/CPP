@@ -1,17 +1,17 @@
-#include "vehicle.h"
+#include "rentalvehicles.h"
 #include <iostream>
 
-Vehicle::Vehicle()
+RentalVehicles::RentalVehicles()
 {
     std::cout<<"Vehicle Constructor Called"<<std::endl;
 }
 
-Vehicle::~Vehicle()
+RentalVehicles::~RentalVehicles()
 {
     std::cout<<"Vehicle Destructor Called"<<std::endl;
 }
 
-Vehicle::Vehicle(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice)
+RentalVehicles::RentalVehicles(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice)
 {
     std::cout<<"Vehicle Parameter Constructor Called"<<std::endl;
     this->m_brand = brand;
@@ -21,52 +21,52 @@ Vehicle::Vehicle(std::string brand, std::string model, std::string vehicleNumber
     this->m_rentPrice = rentPrice;
 }
 
-std::string Vehicle::getBrand()
+std::string RentalVehicles::getBrand()
 {
     return m_brand;
 }
 
-std::string Vehicle::getModel()
+std::string RentalVehicles::getModel()
 {
     return m_model;
 }
 
-std::string Vehicle::getVehicleNumber()
+std::string RentalVehicles::getVehicleNumber()
 {
     return m_vehicleNumber;
 }
 
-float Vehicle::getRentPrice()
+float RentalVehicles::getRentPrice()
 {
     return m_rentPrice;
 }
 
-std::string Vehicle::getStatus()
+std::string RentalVehicles::getStatus()
 {
     return m_status;
 }
 
-void Vehicle::setRentPrice(float rentPrice)
+void RentalVehicles::setRentPrice(float rentPrice)
 {
     this->m_rentPrice = rentPrice;
 }
 
-void Vehicle::setStatus(std::string status)
+void RentalVehicles::setStatus(std::string status)
 {
     this->m_status = status;
 }
 
-void Vehicle::setBrand(std::string brand)
+void RentalVehicles::setBrand(std::string brand)
 {
     this->m_brand = brand;
 }
 
-void Vehicle::setModel(std::string model)
+void RentalVehicles::setModel(std::string model)
 {
     this->m_model = model;
 }
 
-void Vehicle::setVehicleNumber(std::string vehicelNimber)
+void RentalVehicles::setVehicleNumber(std::string vehicelNimber)
 {
     this->m_vehicleNumber = vehicelNimber;
 }

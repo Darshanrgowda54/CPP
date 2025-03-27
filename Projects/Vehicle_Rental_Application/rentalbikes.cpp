@@ -1,17 +1,17 @@
-#include "bike.h"
+#include "rentalbikes.h"
 #include <iostream>
 
-Bike::Bike()
+RentalBikes::RentalBikes()
 {
     std::cout<<"Bike Constructor Called"<<std::endl;
 }
 
-Bike::~Bike()
+RentalBikes::~RentalBikes()
 {
     std::cout<<"Bike Destructor Called"<<std::endl;
 }
 
-Bike::Bike(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice)
+RentalBikes::RentalBikes(std::string brand, std::string model, std::string vehicleNumber, std::string status, float rentPrice)
 {
     std::cout<<"Bike Parameter Constructor Called"<<std::endl;
     this->m_brand = brand;
