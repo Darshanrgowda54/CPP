@@ -84,7 +84,6 @@ void VehicleManager::addCar()
     m_carList.push_back(new RentalCars(brand,model,vehicleNumber,status,rentPrice));
 }
 
-
 void VehicleManager::displayListOfBikes()
 {
     std::cout<<"\nDisplay Bike Function Called"<<std::endl;
@@ -399,6 +398,12 @@ void VehicleManager::searchBike()
     }
 }
 
+enum
+{
+    CASH = 1,
+    UPI
+};
+
 
 void VehicleManager::rentBike()
 {
@@ -436,7 +441,7 @@ void VehicleManager::rentBike()
 
                 switch (choice)
                 {
-                case 1:
+                case CASH:
                 {
                     std::cout<<"Rent Price: "<<bike->getRentPrice()<<std::endl;
                     std::cout << "Enter Amount: ";
@@ -469,7 +474,7 @@ void VehicleManager::rentBike()
                     }
                 }
                 break;
-                case 2:
+                case UPI:
                 {
                     std::cout<<"Rent Price: "<<bike->getRentPrice()<<std::endl;
                     std::cout << "Enter Amount: ";
@@ -560,7 +565,7 @@ void VehicleManager::rentCar()
 
                 switch (choice)
                 {
-                case 1:
+                case CASH:
                 {
                     std::cout<<"Rent Price: "<<car->getRentPrice()<<std::endl;
                     std::cout << "Enter Amount: ";
@@ -593,7 +598,7 @@ void VehicleManager::rentCar()
                     }
                 }
                 break;
-                case 2:
+                case UPI:
                 {
                     std::cout<<"Rent Price: "<<car->getRentPrice()<<std::endl;
                     std::cout << "Enter Amount: ";
@@ -725,99 +730,177 @@ void VehicleManager::displayRentalHistory()
 {
     std::cout << "Display RentalHistory Function Called" << std::endl;
 
-    // std::cout << std::left;
-    // std::cout.width(19);
-    // std::cout << "\nName";
-    // std::cout.width(34);
-    // std::cout << "ContactNumber";
-    // std::cout.width(23);
-    // std::cout << "Duration";
-    // std::cout.width(24);
-    // std::cout << "Brand";
-    // std::cout.width(15);
-    // std::cout << "Model";
-    // std::cout.width(15);
-    // std::cout << "VehicleNumber";
-    // std::cout.width(15);
-    // std::cout << "RentPrice";
-    // std::cout.width(15);
-    // std::cout << "Status";
-    // std::cout<<std::endl;
+    std::cout << std::left;
+    std::cout.width(10);
+    std::cout << "\nName";
+    std::cout.width(15);
+    std::cout << "ContactNumber";
+    std::cout.width(10);
+    std::cout << "Duration";
+    std::cout.width(15);
+    std::cout << "VehicleType";
+    std::cout.width(15);
+    std::cout << "Brand";
+    std::cout.width(12);
+    std::cout << "Model";
+    std::cout.width(15);
+    std::cout << "VehicleNumber";
+    std::cout.width(12);
+    std::cout << "RentPrice";
+    std::cout.width(12);
+    std::cout << "Status";
+    std::cout.width(12);
+    std::cout << "PaymentType";
+    std::cout.width(12);
+    std::cout << "PaymentID";
+    std::cout.width(15);
+    std::cout << "PaymentStatus";
+    std::cout.width(12);
+    std::cout << "PayedAmount";
+    std::cout.width(12);
+    std::cout << "BalanceAmount";
+    std::cout<<std::endl;
     for (auto i : m_rentalHistory)
     {
-        std::cout << "\nCustomerName: " << i->getCustomerName() << " | ";
-        std::cout << "ContactNumber: " << i->getContactNumber() << " | ";
-        std::cout << "RentDuration: " << i->getRentDuration() << " | ";
+        // std::cout << "\nCustomerName: " << i->getCustomerName() << " | ";
+        // std::cout << "ContactNumber: " << i->getContactNumber() << " | ";
+        // std::cout << "RentDuration: " << i->getRentDuration() << " | ";
 
-        std::cout << "VehicleType: " << i->getVehicleType() << " | ";
-        std::cout << "Brand: " << i->getRentalVehicleDetails()->getBrand() << " | ";
-        std::cout << "Model: " << i->getRentalVehicleDetails()->getModel() << " | ";
-        std::cout << "VehicleNumber: " << i->getRentalVehicleDetails()->getVehicleNumber() << " | ";
-        std::cout << "RentPrice: " << i->getRentalVehicleDetails()->getRentPrice() << " | ";
+        // std::cout << "VehicleType: " << i->getVehicleType() << " | ";
+        // std::cout << "Brand: " << i->getRentalVehicleDetails()->getBrand() << " | ";
+        // std::cout << "Model: " << i->getRentalVehicleDetails()->getModel() << " | ";
+        // std::cout << "VehicleNumber: " << i->getRentalVehicleDetails()->getVehicleNumber() << " | ";
+        // std::cout << "RentPrice: " << i->getRentalVehicleDetails()->getRentPrice() << " | ";
 
-        std::cout << "Status: " << i->getRentalVehicleDetails()->getStatus() << " | ";
-        std::cout << "PaymentType: " << i->getPaymentMode()->getPaymentType() << " | ";
-        std::cout << "Payment ID: " << i->getPaymentMode()->getPaymentID() << " | ";
-        std::cout << "PaymentStatus: " << i->getPaymentMode()->getPaymentStatus() << " | ";
-        std::cout << "Payedamount: " << i->getPaymentMode()->getPaidAmount() << " | ";
-        std::cout << "Balanceamount: " << i->getPaymentMode()->getBalanceAmount() <<std::endl;
+        // std::cout << "Status: " << i->getRentalVehicleDetails()->getStatus() << " | ";
+        // std::cout << "PaymentType: " << i->getPaymentMode()->getPaymentType() << " | ";
+        // std::cout << "Payment ID: " << i->getPaymentMode()->getPaymentID() << " | ";
+        // std::cout << "PaymentStatus: " << i->getPaymentMode()->getPaymentStatus() << " | ";
+        // std::cout << "Payedamount: " << i->getPaymentMode()->getPaidAmount() << " | ";
+        // std::cout << "Balanceamount: " << i->getPaymentMode()->getBalanceAmount() <<std::endl;
+
+        std::cout.width(9);
+        std::cout<<i->getCustomerName();
+        std::cout.width(15);
+        std::cout<<i->getContactNumber();
+        std::cout.width(10);
+        std::cout<<i->getRentDuration();
+        std::cout.width(15);
+        std::cout<<i->getVehicleType();
+
+        std::cout.width(15);
+        std::cout<<i->getRentalVehicleDetails()->getBrand();
+        std::cout.width(12);
+        std::cout<<i->getRentalVehicleDetails()->getModel();
+        std::cout.width(15);
+        std::cout<<i->getRentalVehicleDetails()->getVehicleNumber();
+        std::cout.width(12);
+        std::cout<<i->getRentalVehicleDetails()->getRentPrice();
+
+        std::cout.width(12);
+        std::cout<<i->getRentalVehicleDetails()->getStatus();
+        std::cout.width(12);
+        std::cout<<i->getPaymentMode()->getPaymentType();
+        std::cout.width(12);
+        std::cout<<i->getPaymentMode()->getPaymentID();
+        std::cout.width(15);
+        std::cout<<i->getPaymentMode()->getPaymentStatus();
+        std::cout.width(12);
+        std::cout<<i->getPaymentMode()->getPaidAmount();
+        std::cout.width(12);
+        std::cout<<i->getPaymentMode()->getBalanceAmount()<<std::endl;
     }
 }
+
+
+// void VehicleManager::sortByName()
+// {
+//     std::cout<<"Sort By Name Function Called"<<std::endl;
+
+//     for(auto firstcar : m_carList)
+//     {
+//         for(auto secondcar : m_carList)
+//         {
+//             if(secondcar->getBrand() > firstcar->getBrand())
+//             {
+//                 std::iter_swap(firstcar,secondbike);
+//             }
+//         }
+//     }
+
+//     for(auto firstbike : m_bikeList)
+//     {
+//         for(auto secondbike : m_bikeList)
+//         {
+//             if(secondbike->getBrand() > firstbike->getBrand())
+//             {
+//                 std::iter_swap(firstbike,secondbike);
+//             }
+//         }
+//     }
+// }
 
 
 void VehicleManager::sortByName()
 {
-    std::cout<<"Sort By Name Function Called"<<std::endl;
+    std::cout << "Sort By Name Function Called" << std::endl;
 
-    for(auto i : m_carList)
-    {
-        for(auto j : m_carList)
-        {
-            if(j->getBrand() > i->getBrand())
-            {
-                std::iter_swap(i,j);
-            }
-        }
-    }
 
-    for(auto i : m_bikeList)
-    {
-        for(auto j : m_bikeList)
-        {
-            if(j->getBrand() > i->getBrand())
-            {
-                std::iter_swap(i,j);
-            }
-        }
-    }
+    m_carList.sort([](RentalCars* a, RentalCars* b) {
+        return a->getModel() < b->getBrand();
+    });
+
+    m_bikeList.sort([](RentalBikes* a, RentalBikes* b) {
+        return a->getModel() < b->getBrand();
+    });
 }
+
+
+// void VehicleManager::sortByPrice()
+// {
+//     std::cout<<"Sort By Price Function Called"<<std::endl;
+
+//     for(auto firstcar : m_carList)
+//     {
+//         for(auto secondcar : m_carList)
+//         {
+//             if(secondcar->getRentPrice() < firstcar->getRentPrice())
+//             {
+//                 std::iter_swap(firstcar,secondcar);
+//             }
+//         }
+//     }
+
+//     int count1 = 0;
+//     int count2 = 0;
+//     for(auto firstbike : m_bikeList)
+//     {
+//         for(auto secondbike : m_bikeList)
+//         {
+//             if(secondbike->getRentPrice() < firstbike->getRentPrice())
+//             {
+//                 std::iter_swap(firstbike,secondbike);
+//             }
+//             count2 ++;
+//             std::cout<<"Number of count: "<<count2<<std::endl;
+//         }
+//         count1 ++;
+//     }
+//     std::cout<<"Number of count: "<<count1<<std::endl;
+// }
 
 
 void VehicleManager::sortByPrice()
 {
-    std::cout<<"Sort By Price Function Called"<<std::endl;
+    std::cout << "Sort By Price Function Called" << std::endl;
 
-    for(auto i : m_carList)
-    {
-        for(auto j : m_carList)
-        {
-            if(j->getRentPrice() < i->getRentPrice())
-            {
-                std::iter_swap(i,j);
-            }
-        }
-    }
+    m_carList.sort([](RentalCars* a, RentalCars* b) {
+        return a->getRentPrice() > b->getRentPrice();
+    });
 
-    for(auto i : m_bikeList)
-    {
-        for(auto j : m_bikeList)
-        {
-            if(j->getRentPrice() < i->getRentPrice())
-            {
-                std::iter_swap(i,j);
-            }
-        }
-    }
+    m_bikeList.sort([](RentalBikes* a, RentalBikes* b) {
+        return a->getRentPrice() > b->getRentPrice();
+    });
 }
 
 
@@ -852,6 +935,12 @@ void VehicleManager::deleteVehicle()
     std::cout << "Vehicle not found" << std::endl;
 }
 
+enum
+{
+    RENTBIKE = 1,
+    RENTCAR,
+    EXITRENT
+};
 
 void VehicleManager::rentVehicles()
 {
@@ -868,14 +957,14 @@ void VehicleManager::rentVehicles()
 
         switch (choice)
         {
-        case 1:
+        case RENTBIKE:
             rentBike();
             break;
-        case 2:
+        case RENTCAR:
             rentCar();
             break;
-        case 3:
-            std::cout<<" Exit Rent"<<std::endl;
+        case EXITRENT:
+            std::cout<<" Exit Rent "<<std::endl;
             return;
         default:
             std::cout<<"Invalid Choice"<<std::endl;
@@ -884,7 +973,12 @@ void VehicleManager::rentVehicles()
     }
 }
 
-
+enum
+{
+    SEARCHBIKE = 1,
+    SEARCHCAR,
+    EXITSEARCH
+};
 
 void VehicleManager::searchVehicles()
 {
@@ -901,13 +995,13 @@ void VehicleManager::searchVehicles()
 
         switch (choice)
         {
-        case 1:
+        case SEARCHBIKE:
             searchBike();
             break;
-        case 2:
+        case SEARCHCAR:
             searchCar();
             break;
-        case 3:
+        case EXITSEARCH:
             std::cout<<" Exit Search"<<std::endl;
             return;
         default:
@@ -917,6 +1011,13 @@ void VehicleManager::searchVehicles()
     }
 }
 
+enum
+{
+    DISPLAYBIKE = 1,
+    SORTBIKENAME,
+    SORTBIKEPRICE,
+    EXITBIKESORT
+};
 
 void VehicleManager::sortBike()
 {
@@ -934,16 +1035,16 @@ void VehicleManager::sortBike()
 
         switch (choice)
         {
-        case 1:
+        case DISPLAYBIKE:
             displayListOfBikes();
             break;
-        case 2:
+        case SORTBIKENAME:
             sortByName();
             break;
-        case 3:
+        case SORTBIKEPRICE:
             sortByPrice();
             break;
-        case 4:
+        case EXITBIKESORT:
             std::cout<<"Exit Bike List"<<std::endl;
             return;
         default:
@@ -952,6 +1053,15 @@ void VehicleManager::sortBike()
         }
     }
 }
+
+
+enum
+{
+    DISPLAYCAR = 1,
+    SORTCARNAME,
+    SORTCARPRICE,
+    EXITCARSORT
+};
 
 void VehicleManager::sortCar()
 {
@@ -969,13 +1079,13 @@ void VehicleManager::sortCar()
 
         switch (choice)
         {
-        case 1:
+        case DISPLAYCAR:
             displayListOfCars();
             break;
-        case 2:
+        case SORTCARNAME:
             sortByName();
             break;
-        case 3:
+        case SORTCARPRICE:
             sortByPrice();
             break;
         case 4:
@@ -988,6 +1098,14 @@ void VehicleManager::sortCar()
     }
 }
 
+enum
+{
+    BIKE =1,
+    CAR,
+    DISPLAYBOOKEDVEHICLES,
+    DISPLAYAVAILABLEVEHICLES,
+    EXITDISPLAY
+};
 
 void VehicleManager::displayVehicles()
 {
@@ -1006,19 +1124,19 @@ void VehicleManager::displayVehicles()
 
         switch (choice)
         {
-        case 1:
+        case BIKE:
             sortBike();
             break;
-        case 2:
+        case CAR:
             sortCar();
             break;
-        case 3:
+        case DISPLAYBOOKEDVEHICLES:
             sortBookedVehicle();
             break;
-        case 4:
+        case DISPLAYAVAILABLEVEHICLES:
             sortAvailableVehicle();
             break;
-        case 5:
+        case EXITDISPLAY:
             std::cout<<" Exit Display"<<std::endl;
             return;
         default:
@@ -1028,6 +1146,12 @@ void VehicleManager::displayVehicles()
     }
 }
 
+enum
+{
+    UPDATEBIKEPRICE = 1,
+    UPDATECARPRICE,
+    EXITUPDATE
+};
 
 void VehicleManager::updateVehiclesPrice()
 {
@@ -1042,13 +1166,13 @@ void VehicleManager::updateVehiclesPrice()
 
     switch (choice)
     {
-    case 1:
+    case UPDATEBIKEPRICE:
         updateBikePrice();
         break;
-    case 2:
+    case UPDATECARPRICE:
         updateCarPrice();
         break;
-    case 3:
+    case EXITUPDATE:
         std::cout<<"Exit Update"<<std::endl;
         return;
     default:
@@ -1057,6 +1181,12 @@ void VehicleManager::updateVehiclesPrice()
     }
 }
 
+enum
+{
+    ADDBIKE = 1,
+    ADDCAR,
+    EXITADD
+};
 
 void VehicleManager::addVehicles()
 {
@@ -1071,13 +1201,13 @@ void VehicleManager::addVehicles()
 
     switch (choice)
     {
-    case 1:
+    case ADDBIKE:
         addBike();
         break;
-    case 2:
+    case ADDCAR:
         addCar();
         break;
-    case 3:
+    case EXITADD:
         std::cout<<"Exit Add"<<std::endl;
         return;
     default:
@@ -1087,59 +1217,58 @@ void VehicleManager::addVehicles()
 }
 
 
-// void VehicleManager::applicationManager()
-// {
-//     int choice;
+void VehicleManager::applicationManager()
+{
+    int choice;
 
-//     while (true)
-//     {
-//         std::cout << "\nVehicle Rental Application" << std::endl;
-//         std::cout << "\n 1. Add Vehicles" << std::endl;
-//         std::cout << " 2. Display Vehicles" << std::endl;
-//         std::cout << " 3. Update Vehicle Rent Price" << std::endl;
-//         std::cout << " 4. Rent Vehicle" << std::endl;
-//         std::cout << " 5. Return Vehicle" << std::endl;
-//         std::cout << " 6. Display Rental History" << std::endl;
-//         std::cout << " 7. Delete Vehicle" << std::endl;
-//         std::cout << " 8. Search Vehicle" << std::endl;
-//         std::cout << " 9. Sort Vehicles" << std::endl;
-//         std::cout << " 10. Exit" << std::endl;
-//         std::cout << " Enter your choice: ";
-//         std::cin >> choice;
+    while (true)
+    {
+        std::cout << "\nVehicle Rental Application" << std::endl;
+        std::cout << "\n 1. Add Vehicles" << std::endl;
+        std::cout << " 2. Display Vehicles" << std::endl;
+        std::cout << " 3. Update Vehicle Rent Price" << std::endl;
+        std::cout << " 4. Rent Vehicle" << std::endl;
+        std::cout << " 5. Return Vehicle" << std::endl;
+        std::cout << " 6. Display Rental History" << std::endl;
+        std::cout << " 7. Delete Vehicle" << std::endl;
+        std::cout << " 8. Search Vehicle" << std::endl;
+        std::cout << " 9. Exit" << std::endl;
+        std::cout << " Enter your choice: ";
+        std::cin >> choice;
 
-//         switch (choice)
-//         {
-//         case 1:
-//             addVehicles();
-//             break;
-//         case 2:
-//             displayVehicles();
-//             break;
-//         case 3:
-//             updateVehiclesPrice();
-//             break;
-//         case 4:
-//             rentVehicles();
-//             break;
-//         case 5:
-//             returnVehicle();
-//             break;
-//         case 6:
-//             displayRentalHistory();
-//             break;
-//         case 7:
-//             deleteVehicle();
-//             break;
-//         case 8:
-//             searchVehicles();
-//             break;
-//         case 9:
-//             std::cout<<" Exit Vehicle "<<std::endl;
-//             return;
-//         default:
-//             std::cout << "Invalid Choice" <<std::endl;
-//             break;
-//         }
-//     }
-// }
+        switch (choice)
+        {
+        case 1:
+            addVehicles();
+            break;
+        case 2:
+            displayVehicles();
+            break;
+        case 3:
+            updateVehiclesPrice();
+            break;
+        case 4:
+            rentVehicles();
+            break;
+        case 5:
+            returnVehicle();
+            break;
+        case 6:
+            displayRentalHistory();
+            break;
+        case 7:
+            deleteVehicle();
+            break;
+        case 8:
+            searchVehicles();
+            break;
+        case 9:
+            std::cout<<" Exit Vehicle "<<std::endl;
+            return;
+        default:
+            std::cout << "Invalid Choice" <<std::endl;
+            break;
+        }
+    }
+}
 
