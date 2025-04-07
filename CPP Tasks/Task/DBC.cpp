@@ -6,14 +6,12 @@ DBC::DBC()
     qDebug()<< "DBC Constructor Called";
 }
 
-
 DBC::~DBC()
 {
     qDebug()<< "DBC Destructor Called";
 }
 
-
-void DBC::paintEvent()
+void DBC::paintEvent(QPaintEvent *event)
 {
     qDebug()<< "DBC PaintEvent Function Called";
 }

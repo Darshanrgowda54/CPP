@@ -1,14 +1,15 @@
 #ifndef ABC_H
 #define ABC_H
 
-#include "qwidget.h"
+#include <QWidget>
+#include <QPaintEvent>
 class ABC:public QWidget
 {
 public:
     ABC();
     ~ABC();
 
-    void paintEvent();
+    virtual void paintEvent(QPaintEvent *event);
 };
 
 #endif // ABC_H
