@@ -12,7 +12,7 @@ Widget::~Widget()
     qDebug()<< "Widget Destructor Called";
 }
 
-void Widget::paintEvent()
+void Widget::paintEvent(QPaintEvent *event)
 {
     qDebug()<< "Widget PaintEvent Function Called";
 }

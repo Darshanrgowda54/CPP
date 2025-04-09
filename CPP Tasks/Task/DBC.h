@@ -8,7 +8,7 @@ public:
     DBC();
     ~DBC();
 
-    void paintEvent();
+    void paintEvent(QPaintEvent *event);
 };
 
 #endif // DBC_H

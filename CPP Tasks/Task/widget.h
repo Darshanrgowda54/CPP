@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-class Widget : public QWidget/*, QPaintDevice*/
+class Widget : public QWidget
 {
     Q_OBJECT
 
@@ -11,6 +11,6 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-    void paintEvent();
+    void paintEvent(QPaintEvent *event);
 };
 #endif // WIDGET_H
