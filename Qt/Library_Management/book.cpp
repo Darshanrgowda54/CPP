@@ -19,7 +19,7 @@ Book::Book(std::string bookname, std::string bookAuthor, std::string bookId)
     this->m_bookId = bookId;
 }
 
-std::string Book::bookName()
+std::string Book::getBookName()
 {
     return m_bookName;
 }
@@ -29,7 +29,7 @@ void Book::setBookName(std::string newBookName)
     m_bookName = newBookName;
 }
 
-std::string Book::bookAuthor()
+std::string Book::getBookAuthor()
 {
     return m_bookAuthor;
 }
@@ -39,7 +39,7 @@ void Book::setBookAuthor(std::string newBookAuthor)
     m_bookAuthor = newBookAuthor;
 }
 
-std::string Book::bookId()
+std::string Book::getBookId()
 {
     return m_bookId;
 }

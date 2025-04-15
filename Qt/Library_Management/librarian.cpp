@@ -19,10 +19,30 @@ Librarian::Librarian(std::string name, std::string Id)
     this->m_Id = Id;
 }
 
-void Librarian::setLibrary(Library *l)
+void Librarian::requestBook()
 {
-    std::cout<<"Set Library to Librarian Function Called"<<std::endl;
-    this->m_library = l;
+    std::cout<<"Request Book Function Called"<<std::endl;
+    std::string name, author;
+
+    std::cout<<"Enter Book Name: ";
+    std::cin>>name;
+    std::cout<<"Enter Book Author: ";
+    std::cin>>author;
+
+    Library *library = new Library;
+    for(auto book : library->getBookList())
+    {
+        if(book->getBookName() == name && book->getBookAuthor() == author)
+        {
+            std::cout << "Book " << book->getBookName() << "borrowed by " << /*student->getName() << */std::endl;
+            return;
+        }
+        else
+        {
+            std::cout<<"Book Not Found"<<std::endl;
+            return;
+        }
+    }
 }
 
 
@@ -54,11 +74,13 @@ void Librarian::displayBooks()
     std::cout<<"Display Books Function Called"<<std::endl;
 
     std::cout << "List of books"<<std::endl;
-    for (auto book : m_library->getBookList())
+    Library *library = new Library;
+    for(auto book : library->getBookList())
     {
-        std::cout << " Title: " << book->bookName()
-        << " Author: " << book->bookAuthor()
-        << " ID: " << book->bookId() <<std::endl;
+        std::cout << " Title: " << book->getBookName()
+                  << " Author: " << book->getBookAuthor()
+                  << " ID: " << book->getBookId()<<std::endl;
     }
+
 }
 

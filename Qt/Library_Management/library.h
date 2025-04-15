@@ -3,7 +3,6 @@
 
 #include "book.h"
 #include "librarian.h"
-//#include "student.h"
 #include <list>
 class Library
 {
@@ -12,13 +11,11 @@ public:
     ~Library();
 
     void setLibrarian(Librarian *librarian);
-    void addBook();
-    //void addStudent();
+    void addBook();;
 
-    //std::list<Student*> getStudentList();
     std::list<Book*> getBookList();
+
 private:
-    // std::list<Student*>m_studentlist;
     std::list<Book*>m_booklist;
     Librarian* m_librarian;
 };
