@@ -9,13 +9,13 @@ public:
     ~Book();
     Book(std::string bookname, std::string bookAuthor, std::string bookId);
 
-    std::string bookName();
+    std::string getBookName();
     void setBookName(std::string newBookName);
 
-    std::string bookAuthor();
+    std::string getBookAuthor();
     void setBookAuthor(std::string newBookAuthor);
 
-    std::string bookId();
+    std::string getBookId();
     void setBookId(std::string newBookId);
 
 private:
