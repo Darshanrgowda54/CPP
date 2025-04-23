@@ -2,8 +2,10 @@
 #define AUDITORIUM_MANAGER_H
 
 #include "auditorium.h"
+#include "date.h"
 #include <map>
 #include <string>
+#include <vector>
 typedef std::string auditoriumID;
 
 class Auditorium_Manager
@@ -18,7 +20,8 @@ public:
     void displayAuditorium();
 
 private:
-    std::map<auditoriumID,Auditorium *> m_auditoriumList;
+    std::map<auditoriumID,Auditorium*> m_auditoriumList;
+    std::map<Date, std::vector<auditoriumID>> m_bookingsByDate;
 };
 
 #endif // AUDITORIUM_MANAGER_H

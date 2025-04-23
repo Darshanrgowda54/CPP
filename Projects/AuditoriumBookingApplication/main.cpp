@@ -6,8 +6,8 @@ using namespace std;
 enum
 {
     ADDAUDITORIUM = 1,
-    BOOKAUDITORIUM,
     DISPLAYAUDITORIUM,
+    BOOKAUDITORIUM,
     CHECKAVAILABLEAUDITORIUM,
     EXIT
 };
@@ -21,8 +21,8 @@ int main()
     {
         std::cout<<"\nAuditorium Application "<<std::endl;
         std::cout<<" 1. Add Auditorium "<<std::endl;
-        std::cout<<" 2. Book Auditorium "<<std::endl;
-        std::cout<<" 3. Display Auditorium "<<std::endl;
+        std::cout<<" 2. Display Auditorium "<<std::endl;
+        std::cout<<" 3. Book Auditorium "<<std::endl;
         std::cout<<" 4. Check Available Auditorium"<<std::endl;
         std::cout<<" 5. Exit Application"<<std::endl;
         std::cout<<" Enter Your Choice: ";
@@ -33,11 +33,11 @@ int main()
         case ADDAUDITORIUM:
             manager->addAuditorium();
             break;
-        case BOOKAUDITORIUM:
-            manager->bookAuditorium();
-            break;
         case DISPLAYAUDITORIUM:
             manager->displayAuditorium();
+            break;
+        case BOOKAUDITORIUM:
+            manager->bookAuditorium();
             break;
         case CHECKAVAILABLEAUDITORIUM:
             manager->checkAvailableAuditorium();

@@ -16,19 +16,7 @@ public:
     int getYear();
     void setYear(int newYear);
 
-    bool operator<(const Date& rhs) const
-    {
-        if (m_year != rhs.m_year)
-        {
-            return m_year < rhs.m_year;
-        }
-        if (m_month != rhs.m_month)
-        {
-            return m_month < rhs.m_month;
-        }
-        return m_day < rhs.m_day;
-    }
-
+    bool operator<(const Date& date)const;
 private:
     int m_day;
     int m_month;

@@ -9,7 +9,6 @@ Auditorium::Auditorium()
 
 Auditorium::~Auditorium()
 {
-
     std::cout<<"Auditorium Destructor Called"<<std::endl;
 }
 
