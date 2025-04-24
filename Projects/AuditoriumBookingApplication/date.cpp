@@ -1,13 +1,21 @@
 #include "date.h"
 #include <iostream>
+#include <ctime>
 
 
 Date::Date()
 {
     std::cout<<"Date Constructor Called"<<std::endl;
-    this->m_day = 23;
-    this->m_month = 04;
-    this->m_year = 2025;
+
+    std::time_t t = time(nullptr);
+    struct tm* now = localtime(&t);
+    m_day = now->tm_mday;
+    m_month = now->tm_mon + 1;
+    m_year = now->tm_year + 1900;
+
+    // this->m_day = 23;
+    // this->m_month = 04;
+    // this->m_year = 2025;
 }
 
 Date::~Date()

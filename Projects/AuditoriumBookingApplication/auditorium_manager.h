@@ -21,7 +21,9 @@ public:
 
 private:
     std::map<auditoriumID,Auditorium*> m_auditoriumList;
-    std::map<Date, std::vector<auditoriumID>> m_bookingsByDate;
+    std::map<Date, std::vector<auditoriumID>> m_bookingDatelist;
+
+    Date* m_date;
 };
 
 #endif // AUDITORIUM_MANAGER_H

@@ -6,6 +6,8 @@
 Auditorium_Manager::Auditorium_Manager()
 {
     std::cout<<"Auditorium Manager Constructor Called"<<std::endl;
+
+    this->m_date = new Date;
 }
 
 Auditorium_Manager::~Auditorium_Manager()
@@ -15,6 +17,7 @@ Auditorium_Manager::~Auditorium_Manager()
         delete auditorium.second;
     }
     m_auditoriumList.clear();
+    delete m_date;
     std::cout<<"Auditorium Manager Destructor Called"<<std::endl;
 }
 
@@ -35,13 +38,13 @@ void Auditorium_Manager::addAuditorium()
 void Auditorium_Manager::bookAuditorium()
 {
     std::string id;
-    Date date;
+    //Date* date = new Date;
 
-    std::cout << date.getDay() << date.getMonth() << date.getYear();
+    std::cout << m_date->getDay() << m_date->getMonth() << m_date->getYear()<<std::endl;
 
-    int days = date.getDay();
-    int months = date.getMonth();
-    int years = date.getYear();
+    // int days = date.getDay();
+    // int months = date.getMonth();
+    // int years = date.getYear();
 
     std::cout << "Enter Auditorium ID: ";
     std::cin >> id;
@@ -49,9 +52,9 @@ void Auditorium_Manager::bookAuditorium()
     int day, month, year;
     std::cout << "Enter booking date (DD-MM-YYYY): ";
     std::cin >> day >> month >> year;
-    date.setDay(day);
-    date.setMonth(month);
-    date.setYear(year);
+    m_date->setDay(day);
+    m_date->setMonth(month);
+    m_date->setYear(year);
 
 
     if(m_auditoriumList.find(id) == m_auditoriumList.end())
@@ -60,21 +63,22 @@ void Auditorium_Manager::bookAuditorium()
         return;
     }
 
-    auto& bookedList = m_bookingsByDate[date];
+    auto& bookedList = m_bookingDatelist[*m_date];
     if(std::find(bookedList.begin(), bookedList.end(), id) != bookedList.end())
     {
         std::cout << "Auditorium is already booked for selected date" << std::endl;
         return;
     }
 
-    if(years <= year )
+    if(m_date->getYear() <= year )
     {
-        if(months <= month)
+        if(m_date->getMonth() <= month)
         {
-            if(days <= day)
+            if(m_date->getDay() <= day)
             {
-                m_bookingsByDate[date].push_back(id);
-                std::cout << m_auditoriumList[id]->getName()<< " Booked Successfully for "<< day << month << year << std::endl;
+                m_bookingDatelist[*m_date].push_back(id);
+                std::cout << m_auditoriumList[id]->getName()<< " Booked Successfully for Date: "<< day << month << year << std::endl;
+                return;
             }
             else
             {
@@ -87,26 +91,26 @@ void Auditorium_Manager::bookAuditorium()
 
 void Auditorium_Manager::checkAvailableAuditorium()
 {
-    Date date;
+    //Date date;
     int day, month, year;
 
     std::cout << "Enter date to check (DD-MM-YYYY): ";
     std::cin >> day >> month >> year;
-    date.setDay(day);
-    date.setMonth(month);
-    date.setYear(year);
+    m_date->setDay(day);
+    m_date->setMonth(month);
+    m_date->setYear(year);
 
     std::cout << "\nAvailable Auditoriums on Date: " << day<< month<< year <<std::endl;
-    for(auto auditorium = m_auditoriumList.begin();auditorium != m_auditoriumList.end();auditorium++)
+    for(const auto &auditorium : m_auditoriumList)
     {
-        if(std::find(m_bookingsByDate[date].begin(), m_bookingsByDate[date].end(), auditorium->first) == m_bookingsByDate[date].end())
+        if(std::find(m_bookingDatelist[*m_date].begin(), m_bookingDatelist[*m_date].end(), auditorium.first) == m_bookingDatelist[*m_date].end())
         {
-            std::cout << "ID: " << auditorium->first<< ", Name: " << auditorium->second->getName()<< std::endl;
+            std::cout << "ID: " << auditorium.first<< ", Name: " << auditorium.second->getName()<< std::endl;
         }
     }
 
     std::cout << "\nBooked Auditoriums on Date: " << day << month << year << std::endl;
-    for(const auto& auditoriumID : m_bookingsByDate[date])
+    for(const auto& auditoriumID : m_bookingDatelist[*m_date])
     {
         std::cout << "ID: " << auditoriumID<< ", Name: " << m_auditoriumList[auditoriumID]->getName()<< std::endl;
     }
