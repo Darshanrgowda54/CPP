@@ -1,25 +1,18 @@
 #ifndef DATE_H
 #define DATE_H
+#include <iostream>
 
 class Date
 {
 public:
     Date();
-    Date(int day,int month, int year);
     ~Date();
-
     int getDay();
-    void setDay(int newDay);
-
     int getMonth();
-    void setMonth(int newMonth);
-
     int getYear();
-    void setYear(int newYear);
+    bool operator < (const Date& other) const;
+    friend std::istream &operator >> (std::istream& in, Date& date);
 
-    Date getCurrentDate() const;
-
-    bool operator<(const Date& date)const;
 private:
     int m_day;
     int m_month;
