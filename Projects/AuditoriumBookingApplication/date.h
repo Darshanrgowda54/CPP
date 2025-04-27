@@ -5,6 +5,7 @@ class Date
 {
 public:
     Date();
+    Date(int day,int month, int year);
     ~Date();
 
     int getDay();
@@ -15,6 +16,8 @@ public:
 
     int getYear();
     void setYear(int newYear);
+
+    Date getCurrentDate() const;
 
     bool operator<(const Date& date)const;
 private:

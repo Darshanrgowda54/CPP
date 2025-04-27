@@ -9,6 +9,7 @@ class Month
 public:
     Month(int month);
     ~Month();
+
     int getMonth();
     Day* getDay(int day);
     Day* createDay(int day);

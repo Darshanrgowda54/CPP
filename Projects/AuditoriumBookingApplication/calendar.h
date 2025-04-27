@@ -1,6 +1,7 @@
 #ifndef CALENDAR_H
 #define CALENDAR_H
 
+#include "auditorium_manager.h"
 #include "date.h"
 #include "year.h"
 #include <list>
@@ -11,14 +12,16 @@ public:
     ~Calendar();
 
     void printCalendar(int year, int month);
+    void setBookingManager(Auditorium_Manager* m_bookingManager);
     void printTodayDate();
-    void navigateMonths();
+    void changeMonths();
     Year* getYear(int year);
     Year* createYear(int year);
 
 private:
-    Date m_today;
+    Date m_date;
     std::list<Year*> m_years;
+    Auditorium_Manager* m_bookingManager;
 };
 
 #endif // CALENDAR_H

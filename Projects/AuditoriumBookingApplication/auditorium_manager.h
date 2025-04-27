@@ -19,6 +19,10 @@ public:
     void checkAvailableAuditorium();
     void displayAuditorium();
 
+    int getBookedCount(Date& date);
+    int getAvailableCount(Date& date);
+
+    const std::map<Date, std::vector<auditoriumID>>& getBookingDateList() const;
 private:
     std::map<auditoriumID,Auditorium*> m_auditoriumList;
     std::map<Date, std::vector<auditoriumID>> m_bookingDatelist;

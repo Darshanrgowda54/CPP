@@ -6,6 +6,7 @@ class Day
 public:
     Day(int day);
     ~Day();
+
     int getDay();
 
 private:

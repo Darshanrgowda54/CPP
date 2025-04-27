@@ -18,9 +18,16 @@ Date::Date()
     // this->m_year = 2025;
 }
 
+Date::Date(int day, int month, int year)
+{
+    this->m_day = day;
+    this->m_month = month;
+    this->m_year = year;
+}
+
 Date::~Date()
 {
-    std::cout<<"Date Destructor Called"<<std::endl;
+    //std::cout<<"Date Destructor Called"<<std::endl;
 }
 
 int Date::getDay()
@@ -52,6 +59,12 @@ void Date::setYear(int newYear)
 {
     m_year = newYear;
 }
+
+Date Date::getCurrentDate() const
+{
+    return Date(m_day, m_month, m_year);
+}
+
 
 bool Date::operator<(const Date& date) const
 {
