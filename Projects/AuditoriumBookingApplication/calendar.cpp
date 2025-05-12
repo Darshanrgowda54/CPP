@@ -1,7 +1,6 @@
 #include "calendar.h"
 #include "auditorium_manager.h"
 #include <iomanip>
-#include <conio.h>
 #include <iostream>
 
 Calendar::Calendar():m_date()
@@ -51,65 +50,6 @@ int getStartDayOfWeek(int year, int month)
     mktime(&time_in);
     return time_in.tm_wday;
 }
-
-
-// void Calendar::printCalendar(int year, int month)
-// {
-//     Year* newYear = getYear(year);
-//     if (newYear == nullptr)
-//     {
-//         newYear = createYear(year);
-//     }
-
-//     Month* newMonth = newYear->getMonth(month);
-//     if (newMonth == nullptr)
-//     {
-//         newMonth = newYear->createMonth(month);
-//     }
-
-//     const std::string months[] = {
-//         "January", "February", "March", "April", "May", "June",
-//         "July", "August", "September", "October", "November", "December"
-//     };
-
-//     std::cout << "\n      " << months[month - 1] << " " << year << std::endl;
-//     std::cout << "SU MO TU WE TH FR SA\n";
-
-//     int startDay = getStartDayOfWeek(year, month);
-//     int daysInMonth = getDaysInMonth(year, month);
-
-//     int currentDayOfWeek = 0;
-
-//     for (int i = 0; i < startDay; ++i)
-//     {
-//         std::cout << "   ";
-//         currentDayOfWeek++;
-//     }
-
-//     for (int day = 1; day <= daysInMonth; ++day)
-//     {
-//         Day* d = newMonth->getDay(day);
-//         if (!d)
-//         {
-//             d = newMonth->createDay(day);
-//         }
-//         std::cout << std::setw(2) << day << " ";
-//         currentDayOfWeek++;
-
-//         if (currentDayOfWeek == 7)
-//         {
-//             std::cout << std::endl;
-//             currentDayOfWeek = 0;
-//         }
-//     }
-//     if (currentDayOfWeek != 0)
-//     {
-//         std::cout << std::endl;
-//     }
-
-//     std::cout << std::endl;
-// }
-
 
 
 void Calendar::printCalendar(int year, int month)
@@ -200,43 +140,30 @@ void Calendar::printTodayDate()
 
 
 
-void Calendar::changeMonths()
-{
+void Calendar::changeMonths() {
     int currentYear = m_date.getYear();
     int currentMonth = m_date.getMonth();
 
     char key;
     do {
-#ifdef _WIN32
-        system("cls");
-#else
-        system("clear");
-#endif
         printCalendar(currentYear, currentMonth);
-        std::cout << "Press '<' (Prev Month), '>' (Next Month), Press 'Enter' to Booking: ";
+        std::cout << "Press '<' (Prev Month), '>' (Next Month), 'q' to quit: ";
+        std::cin >> key;
 
-        key = _getch();
-
-        if (key == '>')
-        {
+        if (key == '>') {
             currentMonth++;
-            if (currentMonth > 12)
-            {
+            if (currentMonth > 12) {
                 currentMonth = 1;
                 currentYear++;
             }
-        }
-        else if (key == '<')
-        {
+        } else if (key == '<') {
             currentMonth--;
-            if (currentMonth < 1)
-            {
+            if (currentMonth < 1) {
                 currentMonth = 12;
                 currentYear--;
             }
         }
-
-    } while (key != 13);
+    } while (key != 'q');
 }
 
 Year *Calendar::getYear(int year)

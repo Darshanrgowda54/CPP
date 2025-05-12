@@ -20,7 +20,6 @@ int main()
     manager->addAuditorium();
 
     Calendar* calendar = new Calendar;
-    calendar->printTodayDate();
     calendar->setBookingManager(manager);
     calendar->changeMonths();
     int choice;
