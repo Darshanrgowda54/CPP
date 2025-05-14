@@ -62,7 +62,10 @@ void Date::setYear(int newYear)
 
 Date Date::getCurrentDate() const
 {
-    return Date(m_day, m_month, m_year);
+    // return Date(m_day, m_month, m_year);
+    time_t t = time(nullptr);
+    struct tm* now = localtime(&t);
+    return Date(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
 }
 
 

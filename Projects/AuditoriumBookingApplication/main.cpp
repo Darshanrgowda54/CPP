@@ -17,7 +17,6 @@ enum
 int main()
 {
     Auditorium_Manager* manager = new Auditorium_Manager;
-    manager->addAuditorium();
 
     Calendar* calendar = new Calendar;
     calendar->setBookingManager(manager);
@@ -37,9 +36,9 @@ int main()
 
         switch (choice)
         {
-        // case ADDAUDITORIUM:
-        //     manager->addAuditorium();
-        //     break;
+        case ADDAUDITORIUM:
+            manager->addAuditorium();
+            break;
         case DISPLAYAUDITORIUM:
             manager->displayAuditorium();
             break;
