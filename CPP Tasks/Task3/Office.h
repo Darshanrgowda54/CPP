@@ -1,20 +1,19 @@
 #ifndef OFFICE_H
 #define OFFICE_H
 
-#include <vector>
+#include "baseobject.h"
+#include <string>
 class Employee;
 
-class Office
+class Office:public BaseObject
 {
 public:
-    Office();
+    Office(const std::string name);
     ~Office();
 
-    void print();
-    void addEmployee(Employee* employee);
+    void addChild(BaseObject* child) override;
+    void print() override;
 
-private:
-    std::vector<Employee*> m_employeelist;
 };
 
 #endif // OFFICE_H

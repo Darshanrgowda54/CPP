@@ -1,29 +1,30 @@
 #include "Office.h"
-#include "Employee.h"
 #include <iostream>
 
-Office::Office() {
-    //std::cout<<"Office Constructor Called"<<std::endl;
-}
-
-Office::~Office() {
-    //std::cout<<"Office Destructor Called"<<std::endl;
-}
-
-
-void Office::addEmployee(Employee *employee)
+Office::Office(const std::string name):BaseObject(name)
 {
-    m_employeelist.push_back(employee);
+    std::cout<<"Office Constructor Called"<<std::endl;
 }
 
+Office::~Office()
+{
+    std::cout<<"Office Destructor Called"<<std::endl;
+}
+
+void Office::addChild(BaseObject* child)
+{
+    std::cout<<"AddChild Office Function Called"<<std::endl;
+    m_childList.push_back(child);
+}
 
 void Office::print()
 {
-    //std::cout<<"Office Print Function Called"<<std::endl;
+    std::cout<<"Print Office Function Called"<<std::endl;
 
-    std::cout<<"Number of Employee: "<<m_employeelist.size()<<std::endl;
-    for(Employee* emp : m_employeelist)
+    std::cout << "Office Name: " << m_name << std::endl;
+    for (auto empchild : m_childList)
     {
-        emp->print();
+        empchild->print();
     }
 }
+

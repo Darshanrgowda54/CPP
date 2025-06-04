@@ -6,8 +6,10 @@ CONFIG -= qt
 SOURCES += \
         Employee.cpp \
         Office.cpp \
+        baseobject.cpp \
         main.cpp
 
 HEADERS += \
     Employee.h \
-    Office.h
+    Office.h \
+    baseobject.h

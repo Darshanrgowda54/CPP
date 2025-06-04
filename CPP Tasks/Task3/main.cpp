@@ -5,21 +5,21 @@ using namespace std;
 
 int main()
 {
-    Office office;
-    Employee e1("Darshan",&office);
-    Employee e2("Girish",&office);
-    Employee e3("Prathik",&office);
-    Employee e4("Tony",&office);
-    Employee e5("IronMan",&office);
-    Employee e6("Dhanush",&office);
-    Employee e7("Naveen",&office);
-    Employee e8("Manoj",&office);
-    Employee e9("Kiran",&office);
-    Employee e10("Harsha",&office);
-    //Employee e11("Ajay",&e1);
-    //Employee e12("Abjith",&e2);
+    Office office("Pthinks");
+
+    Employee darshan("Darshan",&office);
+    Employee prathik("Prathik",&office);
+    Employee harsha("Harsha",&office);
+    Employee naveen("Naveen",&office);
+    Employee manoj("Manoj",&office);
+
+    Employee e6("Girish",&darshan);
+    Employee e7("Dhanush",&darshan);
 
     office.print();
+    office.getMe();
+    office.findChild("Pthinks");
+    office.findChild("Darshan");
 
     return 0;
 }

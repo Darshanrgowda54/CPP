@@ -2,17 +2,17 @@
 #define EMPLOYEE_H
 
 #include <string>
-#include "Office.h"
-class Employee
+#include "baseobject.h"
+
+class Employee:public BaseObject
 {
 public:
-    Employee();
-    Employee(std::string name,Office* office);
+    Employee(std::string name, BaseObject *parent = nullptr);
     ~Employee();
 
-    void print();
-private:
-    std::string m_name;
+    void addChild(BaseObject* child) override;
+    void print() override;
+
 };
 
 #endif // EMPLOYEE_H
